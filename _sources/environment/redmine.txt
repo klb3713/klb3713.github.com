@@ -1,0 +1,121 @@
+======================
+Ubuntu Redmine安装配置
+======================
+
+（1）安装redmine
+
+root@iTV1:~# apt-get install redmine redmine-mysql
+
+Do you want to continue [Y/n]? y
+
+（2）安装过程中，对数据库进行配置
+
+（3）查看/etc/redmine/default目录下是否有session.xml,database.xml这两个文件
+
+（4）使用 vim或者cat命令打开session.xml文件进行查看，看数据库名称，用户名，密码是否设置正确。
+
+（5）如果在/etc/redmine/default目录下没有session.xml和database.xml这两个文件，可以进行下面操作，自己生成这两个文件。
+
+（5.1）在/usr/share/redmine/ 下执行RAILS_ENV=production rakegenerate_session_store这是生成会话密钥。
+
+（5.2）在/usr/share/redmine/templates/ 目录下有一个database.yml.template的文件，我们将它放到 /etc/redmine/default/目录下并修改文件名为 database.yml，然后打开文件修改配置
+
+production:
+
+adapter: mysql //数据库类型
+
+database: redmine //数据库名
+
+host: localhost //数据库主机
+
+port: 3306 //端口
+
+username: root //数据库用户名
+
+password: root //数据库密码
+
+encoding: utf8 //编码
+
+注意：需手动创建数据库 redmine
+
+然后在/usr/share/redmine/下执行RAILS_ENV=production rake db:migrate 这是生成数据库结构及初始的数据。
+
+（6）这一步就是创建日志log的文件夹和log文件，在/usr/share/redmine 目录下创建文件夹 log 然后在log文件夹下新建一个空的文件，文件名为production.log
+
+（7）启动redmine 在命令行下执行
+
+sudo /usr/share/redmine/script/server -e production
+
+ps: 如果要作为服务执行
+
+sudo /usr/share/redmine/script/server -e production -d
+
+（8）设置redmine监听IP和port
+
+vim /usr/share/redmine/vendor/rails/railties/lib/commands/server.rb
+
+options = {
+
+:Port=> 3000,
+
+:Host=> "0.0.0.0",
+
+:environment => (ENV['RAILS_ENV'] ||"development").dup,
+
+:config=> RAILS_ROOT + "/config.ru",
+
+:detach=> false,
+
+:debugger=> false,
+
+:path=> nil
+
+}
+
+（9）设置默认启动语言为中文
+
+vim /usr/share/redmine/config/settings.yml
+
+default_language:
+
+default: zh
+
+（10）给redmine安装hudson插件(optionally)
+
+首先从http://www.redmine.org/plugins/t-ando_redmine_hudson下载redmin_hudson插件，然后把下载的包解压后上传到/usr/share/redmine/vendor/plugins目录下
+
+（11）然后执行rake db:migrate_plugins RAILS_ENV=production
+
+（12）然后重新启动redmine，配置hudson插件就可以了。
+
+（13）设置redmine隐藏3000端口
+
+Installation notes
+
+Install plugin
+
+Copy theplugin into the vendor/plugins directory
+
+Migrateplugin: rake db:migrate_plugins RAILS_ENV=production
+
+Start Redmine
+
+Enable plugin on project
+
+Move toProject settings
+
+Click'Modules'
+
+Check the box'Hudson', and save.
+
+Edit Hudson settings
+
+Click'Hudson' tab on the menu
+
+Click'Settings' in sidebar
+
+Edit settings( url, job... )
+
+View jobs
+
+Click'Hudson' tab on the menu (In first time, it takes long time)
