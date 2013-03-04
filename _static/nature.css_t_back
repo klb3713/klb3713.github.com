@@ -28,7 +28,7 @@ div.documentwrapper {
 }
 
 div.bodywrapper {
-    margin: 0 0 0 230px;
+    margin: 0 0 0 {{ theme_sidebarwidth|toint }}px;
 }
 
 hr {
@@ -60,7 +60,7 @@ div.footer a {
 }
  
 div.related {
-    background-color: #505050;
+    background-color: #6BA81E;
     line-height: 32px;
     color: #fff;
     text-shadow: 0px 1px 0 #444;
@@ -68,7 +68,7 @@ div.related {
 }
  
 div.related a {
-    color: #ffffff;
+    color: #E2F3CC;
 }
  
 div.sphinxsidebar {

@@ -1,30 +1,23 @@
-.. UReader documentation master file, created by
-   sphinx-quickstart on Tue Mar 27 10:42:57 2012.
+.. notebook documentation master file, created by
+   sphinx-quickstart on Mon Mar  4 09:33:29 2013.
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
-Welcome to UReader's documentation!
-===================================
+Welcome to klb3713's notebook!
+====================================
 
-**UReader** 基于社会化关系和兴趣图谱的个性化推荐阅读
-
-个性化阅读，根据用户的历史行为（发言、标签等数据，点击流、分享、收藏、推荐、跳过等动作）和社交关系（对网络上其他用户信息的评论、推荐、引用等数据），
-动态决定哪些资讯内容（论坛帖子、新闻资讯、博客、微博、等）呈现给用户，主要特点根据用户的兴趣喜好做到个性化推荐，并能根据用户新的行为不断修正完善，
-提高推荐的质量和准确度。
-
-:doc:`tutorial`
-  Start here for a quick overview.
-
-:doc:`environment/index`
-  环境搭建:各种新技术的使用方法……
-
-Changes
--------
-See the :doc:`changelog` for a full list of changes to MongoEngine.
+Contents:
 
 .. toctree::
    :maxdepth: 2
 
-   tutorial
-   environment/index
-   changelog
+   machine learning/index
+
+
+Indices and tables
+==================
+
+* :ref:`genindex`
+* :ref:`modindex`
+* :ref:`search`
+
