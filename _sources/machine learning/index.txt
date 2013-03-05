@@ -1,11 +1,21 @@
 
-机器学习公开课笔记
-=================
+========
+机器学习
+========
 
-Contents:
+Andrew Ng 公开课笔记
+==================== 
 
 .. toctree::
    :maxdepth: 2
    
-   introduction
+   coursera/introduction
 
+
+《机器学习》 Tom M.Mitchell
+==========================
+
+.. toctree::
+   :maxdepth: 2
+   
+   class/introduction

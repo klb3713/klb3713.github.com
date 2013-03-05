@@ -5,4 +5,3 @@ Introduction
 Welcome
 =======
 
-.. image:: images/logo.jpg
