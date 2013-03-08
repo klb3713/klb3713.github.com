@@ -60,7 +60,10 @@ Introduction
 无监督学习详解
 ==============
 
-有监督学习和无监督学习的对比，看图更形象：
+给定一组数据，这些数据从外表上来看没有什么差别，都落在了坐标轴上，
+我们的目标是从中找出结构，并将其分组，如下图，是有监督学习和无监督学习的对比，
+无监督学习给出的是聚类的例子，每个数据都是以原点的形式出现的，
+但是我们能够很清晰地将这些点分成两组(group into)：
 
 .. image:: images/supervised.png
 
@@ -74,8 +77,8 @@ Introduction
 特别的例子： **鸡尾酒会问题（Cocktail party problem）**
 
 “ 鸡尾酒会问题”（cocktail party problem）是在计算机语音识别领域的一个问题，
-当前语音识别技术已经可以以较高精度识别一个人所讲的话，但是当说话的人数为两人
-或者多人时，语音识别率就会极大的降低，这一难题被称为鸡尾酒会问题。
+当前语音识别技术已经可以以较高精度识别一个人所讲的话，但是当说话的人数为两人或者多人时，
+语音识别率就会极大的降低，这一难题被称为鸡尾酒会问题。
 
 .. image:: images/cocktail.png
 
@@ -91,8 +94,6 @@ Introduction
 #. http://www.physorg.com/news75477497.html
 #. http://en.wikipedia.org/wiki/Cocktail_party_effect
 #. http://www.scientificamerican.com/article.cfm?id=solving-the-cocktail-party-problem
-
- 
 
 以下关于"cocktail party problem"的文字引用自该链接： http://xiaozu.renren.com/xiaozu/121443/thread/335879281 ::
 

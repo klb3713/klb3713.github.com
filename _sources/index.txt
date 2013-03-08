@@ -6,6 +6,8 @@
 Welcome to klb3713's notebook!
 ====================================
 
+CST笔记
+--------
 
 .. toctree::
    :maxdepth: 2
@@ -13,10 +15,21 @@ Welcome to klb3713's notebook!
    machine learning/index
 
 
+生活 读书 新知
+--------------
+
+.. toctree::
+   :maxdepth: 2
+
+   book/index
+   movie/index
+   music/index
+
 Indices and tables
 ==================
 
 * :ref:`genindex`
 * :ref:`modindex`
 * :ref:`search`
+* `rst docs <docs/index.html>`_
 * :doc:`about`

@@ -100,14 +100,17 @@ improves with experience E.</li>
 </div>
 <div class="section" id="id5">
 <h2>无监督学习详解<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h2>
-<p>有监督学习和无监督学习的对比，看图更形象：</p>
+<p>给定一组数据，这些数据从外表上来看没有什么差别，都落在了坐标轴上，
+我们的目标是从中找出结构，并将其分组，如下图，是有监督学习和无监督学习的对比，
+无监督学习给出的是聚类的例子，每个数据都是以原点的形式出现的，
+但是我们能够很清晰地将这些点分成两组(group into)：</p>
 <img alt="../../_images/supervised.png" src="../../_images/supervised.png" />
 <img alt="../../_images/unsupervised.png" src="../../_images/unsupervised.png" />
 <p>例子: Google News， 基因序列分析，社会网络分析，市场切分等...</p>
 <p>特别的例子： <strong>鸡尾酒会问题（Cocktail party problem）</strong></p>
 <p>“ 鸡尾酒会问题”（cocktail party problem）是在计算机语音识别领域的一个问题，
-当前语音识别技术已经可以以较高精度识别一个人所讲的话，但是当说话的人数为两人
-或者多人时，语音识别率就会极大的降低，这一难题被称为鸡尾酒会问题。</p>
+当前语音识别技术已经可以以较高精度识别一个人所讲的话，但是当说话的人数为两人或者多人时，
+语音识别率就会极大的降低，这一难题被称为鸡尾酒会问题。</p>
 <img alt="../../_images/cocktail.png" src="../../_images/cocktail.png" />
 <p>鸡尾酒会问题算法（一行代码）:</p>
 <div class="highlight-python"><pre>[W,s,v] = svd((repmat(sum(x.*x,1),size(x,1),1).*x)*x');</pre>
