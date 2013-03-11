@@ -57,6 +57,8 @@ Introduction
 
 .. image:: images/breast_cancer.png
 
+这两者的区别在于分类的output为离散的，而回归的output为连续的，这样讲可能比较抽象，比如上面的例子就是回归，因为output为price，虽然看起来price是离散的，但是他的值是可以无限制的，因此是连续的，而下图为分类的例子，因为output=恶性or良性，可能的取值就两个值，因此为回归。
+
 无监督学习详解
 ==============
 
@@ -70,11 +72,19 @@ Introduction
 .. image:: images/unsupervised.png
 
 
-例子: Google News， 基因序列分析，社会网络分析，市场切分等...
+**非监督学习的例子**
 
+*   Google News，会将一些新闻进行聚类（分组），即每个大类的新闻下面都会有多个URL，这些URL虽然来自不同的网站，但是都是这一类新闻，比如：
 
+.. image:: images/google_news.png
 
-特别的例子： **鸡尾酒会问题（Cocktail party problem）**
+*   Market segmentation：将客户分组为几组，对每组客户进行不同的销售手段，如下图：
+
+.. image:: images/market.png
+
+基因序列分析，社会网络分析等...
+
+*   特别的例子： **鸡尾酒会问题（Cocktail party problem）**
 
 “ 鸡尾酒会问题”（cocktail party problem）是在计算机语音识别领域的一个问题，
 当前语音识别技术已经可以以较高精度识别一个人所讲的话，但是当说话的人数为两人或者多人时，
@@ -87,7 +97,7 @@ Introduction
     [W,s,v] = svd((repmat(sum(x.*x,1),size(x,1),1).*x)*x');
 
 
-一些参考资料：
+一些参考资料:
 
 #. 解决方法ICA demo: http://research.ics.tkk.fi/ica/cocktail/cocktail_en.cgi
 #. http://www.vislab.uq.edu.au/education/sc3/2001/johan/johan.pdf
@@ -105,6 +115,23 @@ Introduction
     google这条代码有post说这是ICA，我就迷茫了。。。看不出来怎么是ICA了。。折腾一夜了，毫无头绪。。。
     顺便求此问题的demo。。各种语言均无妨。。
 
+练习题
+======
+
+#.  你现在在证券所上班，对于某个特定的股票A，希望根据以往的价格走势，来推算出明天的价格是多少，这算是分类问题还是回归问题？
+
+    答：属于回归问题，因为股票的价格是连续的，因此是回归问题；
+
+#.  我们给出4个问题：
+
+    *   我们已经知道了这一堆是垃圾邮件，想要将这些垃圾邮件继续分子类；
+    *   给定一个数据集，全是心脏病的病人，我们需要将他们分成不同的簇，对每个簇用不同的治疗方法；
+    *   两个足球队要比赛，根据以往的数据，预测哪个队会赢；
+    *   根据一个人的DNA，预测10年后得糖尿病的几率；
+
+    哪些是监督学习，哪些是非监督学习？
+
+    答：(1)和(2)是监督学习，(3)和(4)是非监督学习；
 
 .. rubric:: Footnotes
 .. [#] Arthur Lee Samuel (1901–1990) 教授是美国人工智能领域的先驱，他设计了一些下棋程序，可以通过不断的下棋来学习，从而达到很高的下棋水平。

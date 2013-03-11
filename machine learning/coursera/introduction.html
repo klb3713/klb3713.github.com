@@ -65,7 +65,7 @@
 大多数的自然语言处理任务，计算机视觉，推荐系统等。机器学习有很多定义，
 广为人知的有如下两条：</p>
 <ul class="simple">
-<li>Arthur Samuel (1959) <a class="footnote-reference" href="#id6" id="id2">[1]</a>: Machine Learning: Field of study that gives
+<li>Arthur Samuel (1959) <a class="footnote-reference" href="#id7" id="id2">[1]</a>: Machine Learning: Field of study that gives
 computers the ability to learn without being explicitly programmed.</li>
 <li>Tom Mitchell (1998) : Well-posed Learning Problem: A computer program
 is said to learn from experience E with respect to some task T
@@ -97,6 +97,7 @@ improves with experience E.</li>
 <img alt="../../_images/house_price.png" src="../../_images/house_price.png" />
 <p>乳腺癌（良性，恶性）预测问题-分类(Classification): 预测离散的输出值(0, 1)</p>
 <img alt="../../_images/breast_cancer.png" src="../../_images/breast_cancer.png" />
+<p>这两者的区别在于分类的output为离散的，而回归的output为连续的，这样讲可能比较抽象，比如上面的例子就是回归，因为output为price，虽然看起来price是离散的，但是他的值是可以无限制的，因此是连续的，而下图为分类的例子，因为output=恶性or良性，可能的取值就两个值，因此为回归。</p>
 </div>
 <div class="section" id="id5">
 <h2>无监督学习详解<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h2>
@@ -106,8 +107,19 @@ improves with experience E.</li>
 但是我们能够很清晰地将这些点分成两组(group into)：</p>
 <img alt="../../_images/supervised.png" src="../../_images/supervised.png" />
 <img alt="../../_images/unsupervised.png" src="../../_images/unsupervised.png" />
-<p>例子: Google News， 基因序列分析，社会网络分析，市场切分等...</p>
-<p>特别的例子： <strong>鸡尾酒会问题（Cocktail party problem）</strong></p>
+<p><strong>非监督学习的例子</strong></p>
+<ul class="simple">
+<li>Google News，会将一些新闻进行聚类（分组），即每个大类的新闻下面都会有多个URL，这些URL虽然来自不同的网站，但是都是这一类新闻，比如：</li>
+</ul>
+<img alt="../../_images/google_news.png" src="../../_images/google_news.png" />
+<ul class="simple">
+<li>Market segmentation：将客户分组为几组，对每组客户进行不同的销售手段，如下图：</li>
+</ul>
+<img alt="../../_images/market.png" src="../../_images/market.png" />
+<p>基因序列分析，社会网络分析等...</p>
+<ul class="simple">
+<li>特别的例子： <strong>鸡尾酒会问题（Cocktail party problem）</strong></li>
+</ul>
 <p>“ 鸡尾酒会问题”（cocktail party problem）是在计算机语音识别领域的一个问题，
 当前语音识别技术已经可以以较高精度识别一个人所讲的话，但是当说话的人数为两人或者多人时，
 语音识别率就会极大的降低，这一难题被称为鸡尾酒会问题。</p>
@@ -115,7 +127,7 @@ improves with experience E.</li>
 <p>鸡尾酒会问题算法（一行代码）:</p>
 <div class="highlight-python"><pre>[W,s,v] = svd((repmat(sum(x.*x,1),size(x,1),1).*x)*x');</pre>
 </div>
-<p>一些参考资料：</p>
+<p>一些参考资料:</p>
 <ol class="arabic simple">
 <li>解决方法ICA demo: <a class="reference external" href="http://research.ics.tkk.fi/ica/cocktail/cocktail_en.cgi">http://research.ics.tkk.fi/ica/cocktail/cocktail_en.cgi</a></li>
 <li><a class="reference external" href="http://www.vislab.uq.edu.au/education/sc3/2001/johan/johan.pdf">http://www.vislab.uq.edu.au/education/sc3/2001/johan/johan.pdf</a></li>
@@ -132,8 +144,26 @@ lz土人感觉是用了PCA的方法。。可是W运行出来丝毫没有unmixing
 google这条代码有post说这是ICA，我就迷茫了。。。看不出来怎么是ICA了。。折腾一夜了，毫无头绪。。。
 顺便求此问题的demo。。各种语言均无妨。。</pre>
 </div>
+</div>
+<div class="section" id="id6">
+<h2>练习题<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic">
+<li><p class="first">你现在在证券所上班，对于某个特定的股票A，希望根据以往的价格走势，来推算出明天的价格是多少，这算是分类问题还是回归问题？</p>
+<p>答：属于回归问题，因为股票的价格是连续的，因此是回归问题；</p>
+</li>
+<li><p class="first">我们给出4个问题：</p>
+<ul class="simple">
+<li>我们已经知道了这一堆是垃圾邮件，想要将这些垃圾邮件继续分子类；</li>
+<li>给定一个数据集，全是心脏病的病人，我们需要将他们分成不同的簇，对每个簇用不同的治疗方法；</li>
+<li>两个足球队要比赛，根据以往的数据，预测哪个队会赢；</li>
+<li>根据一个人的DNA，预测10年后得糖尿病的几率；</li>
+</ul>
+<p>哪些是监督学习，哪些是非监督学习？</p>
+<p>答：(1)和(2)是监督学习，(3)和(4)是非监督学习；</p>
+</li>
+</ol>
 <p class="rubric">Footnotes</p>
-<table class="docutils footnote" frame="void" id="id6" rules="none">
+<table class="docutils footnote" frame="void" id="id7" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
 <tr><td class="label"><a class="fn-backref" href="#id2">[1]</a></td><td>Arthur Lee Samuel (1901–1990) 教授是美国人工智能领域的先驱，他设计了一些下棋程序，可以通过不断的下棋来学习，从而达到很高的下棋水平。</td></tr>
@@ -155,6 +185,7 @@ google这条代码有post说这是ICA，我就迷茫了。。。看不出来怎�
 <li><a class="reference internal" href="#id3">机器学习算法的类型</a></li>
 <li><a class="reference internal" href="#id4">有监督学习详解</a></li>
 <li><a class="reference internal" href="#id5">无监督学习详解</a></li>
+<li><a class="reference internal" href="#id6">练习题</a></li>
 </ul>
 </li>
 </ul>

@@ -3,16 +3,18 @@
 读书笔记
 ========
 
-虚构类
-------
+故事
+---- 
 
 .. toctree::
    :maxdepth: 1
    
    fiction/scm
 
-非虚构类
---------
+旅行
+-----
 
 .. toctree::
-   :maxdepth: 2
+   :maxdepth: 1
+   
+   journey/jcldxlx
