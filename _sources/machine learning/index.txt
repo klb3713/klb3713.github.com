@@ -17,6 +17,7 @@ Andrew Ng 公开课笔记
    :maxdepth: 2
    
    coursera/introduction
+   coursera/linear-regression-with-one-variable
 
 
 《机器学习》 Tom M.Mitchell

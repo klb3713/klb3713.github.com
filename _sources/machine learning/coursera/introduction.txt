@@ -1,5 +1,5 @@
 ============
-Introduction
+引言
 ============
 以下是第一课“引言”的PPT课件资料，视频可以在Coursera机器学习课程上观看或下载：
 `ppt <https://d19vezwu8eufl6.cloudfront.net/ml/docs%2Fslides%2FLecture1.pptx>`_

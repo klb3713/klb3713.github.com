@@ -7,7 +7,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Introduction &mdash; klb3713&#39;s notebook</title>
+    <title>引言 &mdash; klb3713&#39;s notebook</title>
     
     <link rel="stylesheet" href="../../_static/nature.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
@@ -24,10 +24,11 @@
     <script type="text/javascript" src="../../_static/jquery.js"></script>
     <script type="text/javascript" src="../../_static/underscore.js"></script>
     <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <link rel="author" title="About these documents" href="../../about.html" />
     <link rel="top" title="klb3713&#39;s notebook" href="../../index.html" />
     <link rel="up" title="机器学习" href="../index.html" />
-    <link rel="next" title="Introduction" href="../class/introduction.html" />
+    <link rel="next" title="单变量线性回归" href="linear-regression-with-one-variable.html" />
     <link rel="prev" title="机器学习" href="../index.html" /> 
   </head>
   <body>
@@ -38,7 +39,7 @@
           <a href="../../genindex.html" title="General Index"
              accesskey="I">index</a></li>
         <li class="right" >
-          <a href="../class/introduction.html" title="Introduction"
+          <a href="linear-regression-with-one-variable.html" title="单变量线性回归"
              accesskey="N">next</a> |</li>
         <li class="right" >
           <a href="../index.html" title="机器学习"
@@ -53,19 +54,19 @@
         <div class="bodywrapper">
           <div class="body">
             
-  <div class="section" id="introduction">
-<h1>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="id1">
+<h1>引言<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
 <p>以下是第一课“引言”的PPT课件资料，视频可以在Coursera机器学习课程上观看或下载：
 <a class="reference external" href="https://d19vezwu8eufl6.cloudfront.net/ml/docs%2Fslides%2FLecture1.pptx">ppt</a>
 <a class="reference external" href="https://d19vezwu8eufl6.cloudfront.net/ml/docs%2Fslides%2FLecture1.pdf">pdf</a></p>
-<div class="section" id="id1">
-<h2>机器学习定义<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id2">
+<h2>机器学习定义<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
 <p>机器学习是人工智能的一个分支，目标是赋予机器一种新的能力。机器学习的应用很广泛，
 例如大规模的数据挖掘（网页点击数据，医疗记录等），无人驾驶飞机、汽车，手写手别，
 大多数的自然语言处理任务，计算机视觉，推荐系统等。机器学习有很多定义，
 广为人知的有如下两条：</p>
 <ul class="simple">
-<li>Arthur Samuel (1959) <a class="footnote-reference" href="#id7" id="id2">[1]</a>: Machine Learning: Field of study that gives
+<li>Arthur Samuel (1959) <a class="footnote-reference" href="#id8" id="id3">[1]</a>: Machine Learning: Field of study that gives
 computers the ability to learn without being explicitly programmed.</li>
 <li>Tom Mitchell (1998) : Well-posed Learning Problem: A computer program
 is said to learn from experience E with respect to some task T
@@ -76,8 +77,8 @@ improves with experience E.</li>
 查看哪些邮件被标记为垃圾邮件哪些被标记为非垃圾邮件是经验E，正确识别的垃圾邮件或
 非垃圾邮件的数量或比率是评测指标P。</p>
 </div>
-<div class="section" id="id3">
-<h2>机器学习算法的类型<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id4">
+<h2>机器学习算法的类型<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h2>
 <ol class="arabic simple">
 <li>有监督学习(Supervised learning):通过生成一个函数将输入映射为一个合适的输出
 （通常也称为标记，多数情况下训练集都是有人工专家标注生成的）。例如分类问题，
@@ -90,8 +91,8 @@ improves with experience E.</li>
 </ol>
 <p>其他的类型包括推荐系统，Transduction，Learning to learn等。</p>
 </div>
-<div class="section" id="id4">
-<h2>有监督学习详解<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id5">
+<h2>有监督学习详解<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h2>
 <p>有监督学习主要会提供一些标注样本，分为两大问题：回归和分类</p>
 <p>房屋价格预测-回归(Regression): 预测连续的输出值（价格)</p>
 <img alt="../../_images/house_price.png" src="../../_images/house_price.png" />
@@ -99,8 +100,8 @@ improves with experience E.</li>
 <img alt="../../_images/breast_cancer.png" src="../../_images/breast_cancer.png" />
 <p>这两者的区别在于分类的output为离散的，而回归的output为连续的，这样讲可能比较抽象，比如上面的例子就是回归，因为output为price，虽然看起来price是离散的，但是他的值是可以无限制的，因此是连续的，而下图为分类的例子，因为output=恶性or良性，可能的取值就两个值，因此为回归。</p>
 </div>
-<div class="section" id="id5">
-<h2>无监督学习详解<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id6">
+<h2>无监督学习详解<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h2>
 <p>给定一组数据，这些数据从外表上来看没有什么差别，都落在了坐标轴上，
 我们的目标是从中找出结构，并将其分组，如下图，是有监督学习和无监督学习的对比，
 无监督学习给出的是聚类的例子，每个数据都是以原点的形式出现的，
@@ -145,8 +146,8 @@ google这条代码有post说这是ICA，我就迷茫了。。。看不出来怎�
 顺便求此问题的demo。。各种语言均无妨。。</pre>
 </div>
 </div>
-<div class="section" id="id6">
-<h2>练习题<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id7">
+<h2>练习题<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h2>
 <ol class="arabic">
 <li><p class="first">你现在在证券所上班，对于某个特定的股票A，希望根据以往的价格走势，来推算出明天的价格是多少，这算是分类问题还是回归问题？</p>
 <p>答：属于回归问题，因为股票的价格是连续的，因此是回归问题；</p>
@@ -163,10 +164,10 @@ google这条代码有post说这是ICA，我就迷茫了。。。看不出来怎�
 </li>
 </ol>
 <p class="rubric">Footnotes</p>
-<table class="docutils footnote" frame="void" id="id7" rules="none">
+<table class="docutils footnote" frame="void" id="id8" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id2">[1]</a></td><td>Arthur Lee Samuel (1901–1990) 教授是美国人工智能领域的先驱，他设计了一些下棋程序，可以通过不断的下棋来学习，从而达到很高的下棋水平。</td></tr>
+<tr><td class="label"><a class="fn-backref" href="#id3">[1]</a></td><td>Arthur Lee Samuel (1901–1990) 教授是美国人工智能领域的先驱，他设计了一些下棋程序，可以通过不断的下棋来学习，从而达到很高的下棋水平。</td></tr>
 </tbody>
 </table>
 </div>
@@ -180,12 +181,12 @@ google这条代码有post说这是ICA，我就迷茫了。。。看不出来怎�
         <div class="sphinxsidebarwrapper">
   <h3><a href="../../index.html">Table Of Contents</a></h3>
   <ul>
-<li><a class="reference internal" href="#">Introduction</a><ul>
-<li><a class="reference internal" href="#id1">机器学习定义</a></li>
-<li><a class="reference internal" href="#id3">机器学习算法的类型</a></li>
-<li><a class="reference internal" href="#id4">有监督学习详解</a></li>
-<li><a class="reference internal" href="#id5">无监督学习详解</a></li>
-<li><a class="reference internal" href="#id6">练习题</a></li>
+<li><a class="reference internal" href="#">引言</a><ul>
+<li><a class="reference internal" href="#id2">机器学习定义</a></li>
+<li><a class="reference internal" href="#id4">机器学习算法的类型</a></li>
+<li><a class="reference internal" href="#id5">有监督学习详解</a></li>
+<li><a class="reference internal" href="#id6">无监督学习详解</a></li>
+<li><a class="reference internal" href="#id7">练习题</a></li>
 </ul>
 </li>
 </ul>
@@ -194,8 +195,8 @@ google这条代码有post说这是ICA，我就迷茫了。。。看不出来怎�
   <p class="topless"><a href="../index.html"
                         title="previous chapter">机器学习</a></p>
   <h4>Next topic</h4>
-  <p class="topless"><a href="../class/introduction.html"
-                        title="next chapter">Introduction</a></p>
+  <p class="topless"><a href="linear-regression-with-one-variable.html"
+                        title="next chapter">单变量线性回归</a></p>
   <h3>This Page</h3>
   <ul class="this-page-menu">
     <li><a href="../../_sources/machine learning/coursera/introduction.txt"
@@ -225,7 +226,7 @@ google这条代码有post说这是ICA，我就迷茫了。。。看不出来怎�
           <a href="../../genindex.html" title="General Index"
              >index</a></li>
         <li class="right" >
-          <a href="../class/introduction.html" title="Introduction"
+          <a href="linear-regression-with-one-variable.html" title="单变量线性回归"
              >next</a> |</li>
         <li class="right" >
           <a href="../index.html" title="机器学习"

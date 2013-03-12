@@ -1,0 +1,241 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>单变量线性回归 &mdash; klb3713&#39;s notebook</title>
+    
+    <link rel="stylesheet" href="../../_static/nature.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../',
+        VERSION:     '1.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="author" title="About these documents" href="../../about.html" />
+    <link rel="top" title="klb3713&#39;s notebook" href="../../index.html" />
+    <link rel="up" title="机器学习" href="../index.html" />
+    <link rel="next" title="Introduction" href="../class/introduction.html" />
+    <link rel="prev" title="引言" href="introduction.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../class/introduction.html" title="Introduction"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="introduction.html" title="引言"
+             accesskey="P">previous</a> |</li>
+        <li><a href="../../index.html">klb3713&#39;s notebook</a> &raquo;</li>
+          <li><a href="../index.html" accesskey="U">机器学习</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="id1">
+<h1>单变量线性回归<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
+<p>斯坦福大学机器学习第二课&#8221;单变量线性回归(Linear regression with one variable)“
+学习笔记，本次课程主要包括7部分：</p>
+<ol class="arabic simple">
+<li>Model representation(模型表示</li>
+<li>Cost function(代价函数，成本函数)</li>
+<li>Cost function intuition I(直观解释1)</li>
+<li>Cost function intuition II(直观解释2)</li>
+<li>Gradient descent(梯度下降)</li>
+<li>Gradient descent intuition(梯度下降直观解释)</li>
+<li>Gradient descent for linear regression(应用于线性回归的的梯度下降算法)</li>
+</ol>
+<p>以下是第二课“单变量线性回归”的课件资料下载链接，视频可以在Coursera机器学习课程上观看或下载：
+<a class="reference external" href="https://d19vezwu8eufl6.cloudfront.net/ml/docs%2Fslides%2FLecture2.pptx">PPT</a>
+<a class="reference external" href="https://d19vezwu8eufl6.cloudfront.net/ml/docs%2Fslides%2FLecture2.pdf">PDF</a></p>
+<div class="section" id="model-representation">
+<h2>Model representation(模型表示)<a class="headerlink" href="#model-representation" title="Permalink to this headline">¶</a></h2>
+<p>回到 <a class="reference internal" href="introduction.html"><em>引言</em></a> 中的房屋价格预测问题，首先它是一个有监督学习的问题
+（对于每个样本的输入，都有正确的输出或者答案），同时它也是一个回归问题
+（预测一个实值输出）。训练集表示如下：</p>
+<img alt="../../_images/2-1.png" src="../../_images/2-1.png" />
+<p>其中：</p>
+<p>m = 训练样本的数目</p>
+<p>x&#8217;s = “输入”变量，也称之为特征</p>
+<p>y&#8217;s = “输出”变量，也称之为“目标”变量</p>
+<p>对于房价预测问题，学习过程可用下图表示：</p>
+<img alt="../../_images/2-2.png" src="../../_images/2-2.png" />
+<p>其中x代表房屋的大小，y代表预测的价格，h(hypothesis)将输入变量 x 映射到输出变量 y，如何表示h?</p>
+<p>事实上Hypothesis可以表示成如下形式：</p>
+<div class="math">
+\[h_\theta(x) = \theta_0 + \theta_1 x\]</div>
+<p>简写为 h(x)，也就是带一个变量的线性回归或者单变量线性回归问题。</p>
+</div>
+<div class="section" id="cost-function">
+<h2>Cost function(代价函数，成本函数)<a class="headerlink" href="#cost-function" title="Permalink to this headline">¶</a></h2>
+<p>对于Hypothesis: <span class="math">\(h_\theta(x) = \theta_0 + \theta_1 x\)</span>,
+<span class="math">\(\theta_i\)</span> 为参数, 如何求 <span class="math">\(\theta_i\)</span> ?</p>
+<img alt="../../_images/2-3.png" src="../../_images/2-3.png" />
+<p>构想： 对于训练集(x, y)，选取参数 <span class="math">\(\theta_0, \theta_1\)</span> 使得 <span class="math">\(h_\theta(x)\)</span> 尽可能的接近y。</p>
+<p>如何做呢？一种做法就是求训练集的平方误差函数（squared error function），Cost Function可表示为:</p>
+<div class="math">
+\[J(\theta_0, \theta_1) = \frac{1}{2m}\sum_{i=1}^m{(h_\theta(x^{(i)}) - y^{(i)})^2}\]</div>
+<p>并且选取合适的参数使其最小化，数学表示如下：</p>
+<div class="math">
+\[\displaystyle\mathop{\mathrm{minimize}}\limits_{\theta_0, \theta_1} J(\theta_0, \theta_1)\]</div>
+</div>
+<div class="section" id="cost-function-intuition-i-1">
+<h2>Cost function intuition I(直观解释1)<a class="headerlink" href="#cost-function-intuition-i-1" title="Permalink to this headline">¶</a></h2>
+<p>直观来看，线性回归主要包括如下四大部分，分别是Hypothesis, Parameters, Cost Function, Goal:</p>
+<img alt="../../_images/2-4.png" src="../../_images/2-4.png" />
+<p>这里作者给出了一个简化版的Cost function解释，也就是令 <span class="math">\(\theta_0\)</span> 为0：</p>
+<img alt="../../_images/2-5.png" src="../../_images/2-5.png" />
+<p>然后令 <span class="math">\(\theta_1\)</span> 分别取1、0.5、-0.5等值，同步对比 <span class="math">\(h_\theta(x)\)</span>
+和 <span class="math">\(J(\theta_0, \theta_1)\)</span> 在二维坐标系中的变化情况，具体可参考原PPT中的对比图，很直观。</p>
+</div>
+<div class="section" id="cost-function-intuition-ii-2">
+<h2>Cost function intuition II(直观解释2)<a class="headerlink" href="#cost-function-intuition-ii-2" title="Permalink to this headline">¶</a></h2>
+<p>回顾线性回归的四个部分，这一次不再对Cost Function做简化处理，这个时候
+<span class="math">\(J(\theta_0, \theta_1)\)</span> 的图形是一个三维图或者一个等高线图，具体可参考原课件。</p>
+<p>可以发现，当 <span class="math">\(h_\theta(x)\)</span> 的直线越来越接近样本点时，
+<span class="math">\(J(\theta_0, \theta_1)\)</span> 在等高线的图中的点越来越接近最小值的位置。</p>
+</div>
+<div class="section" id="gradient-descent">
+<h2>Gradient descent(梯度下降)<a class="headerlink" href="#gradient-descent" title="Permalink to this headline">¶</a></h2>
+<p>应用的场景之一——最小值问题：</p>
+<p>对于一些函数，例如 <span class="math">\(J(\theta_0, \theta_1)\)</span>,
+目标: <span class="math">\(\displaystyle\mathop{\mathrm{minimize}}\limits_{\theta_0, \theta_1} J(\theta_0, \theta_1)\)</span></p>
+<p><strong>方法的框架:</strong></p>
+<ol class="arabic simple">
+<li>给 <span class="math">\(\theta_0, \theta_1\)</span> 一个初始值，例如都等于0</li>
+<li>每次改变 <span class="math">\(\theta_0, \theta_1\)</span> 的时候都保持 <span class="math">\(J(\theta_0, \theta_1)\)</span> 递减，
+直到达到一个我们满意的最小值；</li>
+</ol>
+<p>对于任一 <span class="math">\(J(\theta_0, \theta_1)\)</span>, 初始位置不同，最终达到的极小值点也不同，例如以下两个例子：</p>
+<img alt="../../_images/2-6.png" src="../../_images/2-6.png" />
+<img alt="../../_images/2-7.png" src="../../_images/2-7.png" />
+<p><strong>梯度下降算法：</strong></p>
+<p>重复下面的公式直到收敛：</p>
+<img alt="../../_images/2-8.png" src="../../_images/2-8.png" />
+<p><strong>举例：</strong></p>
+<p>参数正确的更新过程如下（同步更新）：</p>
+<img alt="../../_images/2-9.png" src="../../_images/2-9.png" />
+<p>错误的更新过程如下：</p>
+<img alt="../../_images/2-10.png" src="../../_images/2-10.png" />
+</div>
+<div class="section" id="gradient-descent-intuition">
+<h2>Gradient descent intuition(梯度下降直观解释)<a class="headerlink" href="#gradient-descent-intuition" title="Permalink to this headline">¶</a></h2>
+<p>举例，对于一个简化的 <span class="math">\(J(\theta_1)\)</span> 来说，无论抛物线的左边还是右边，
+在梯度下降算法下， <span class="math">\(\theta_1\)</span> 都是保持正确的方向（递增或递减）</p>
+<p>对于learning rate(又称为步长)来说:</p>
+<img alt="../../_images/2-11.png" src="../../_images/2-11.png" />
+<p>如果 <span class="math">\(\alpha\)</span> 过小，梯度下降可能很慢；如果过大，梯度下降有可能“迈过”（overshoot）最小点，
+并且有可能收敛失败，并且产生“分歧”(diverge)</p>
+<p>梯度下降可以使函数收敛到一个局部最小值，特别对于learning rate <span class="math">\(\alpha\)</span> 是固定值的时候：</p>
+<img alt="../../_images/2-12.png" src="../../_images/2-12.png" />
+<p>当函数接近局部最小值的时候，梯度下降法将自动的采取“小步子”， 所以没有必要随着时间的推移减小learning rate.</p>
+<p>关于梯度下降算法，可以参考 <a class="reference external" href="http://zh.wikipedia.org/wiki/%E6%A2%AF%E5%BA%A6%E4%B8%8B%E9%99%8D%E6%B3%95">维基百科</a> 的介绍</p>
+</div>
+<div class="section" id="gradient-descent-for-linear-regression">
+<h2>Gradient descent for linear regression(应用于线性回归的的梯度下降算法)<a class="headerlink" href="#gradient-descent-for-linear-regression" title="Permalink to this headline">¶</a></h2>
+<p>梯度下降算法：</p>
+<img alt="../../_images/2-13.png" src="../../_images/2-13.png" />
+<p>线性回归模型：</p>
+<img alt="../../_images/2-14.png" src="../../_images/2-14.png" />
+<p><span class="math">\(J(\theta_0, \theta_1)\)</span> 对 <span class="math">\(\theta_0, \theta_1\)</span> 求导得：</p>
+<img alt="../../_images/2-15.png" src="../../_images/2-15.png" />
+<p>在梯度下降算法中进行替换，就得到单变量线性回归梯度下降算法：</p>
+<img alt="../../_images/2-16.png" src="../../_images/2-16.png" />
+<p>详细的图形举例请参考官方PPT，主要是在等高线图举例梯度下降的收敛过程，
+逐步逼近最小值点，其中一幅图说明：线性回归函数是凸函数(convex function)，具有碗状（bowl shape)。</p>
+<p><strong>总结</strong>： 这里的梯度下降算法也称为&#8221;Batch&#8221; 梯度下降: 梯度下降的每一步都使用了所有的训练样本。</p>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="../../index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">单变量线性回归</a><ul>
+<li><a class="reference internal" href="#model-representation">Model representation(模型表示)</a></li>
+<li><a class="reference internal" href="#cost-function">Cost function(代价函数，成本函数)</a></li>
+<li><a class="reference internal" href="#cost-function-intuition-i-1">Cost function intuition I(直观解释1)</a></li>
+<li><a class="reference internal" href="#cost-function-intuition-ii-2">Cost function intuition II(直观解释2)</a></li>
+<li><a class="reference internal" href="#gradient-descent">Gradient descent(梯度下降)</a></li>
+<li><a class="reference internal" href="#gradient-descent-intuition">Gradient descent intuition(梯度下降直观解释)</a></li>
+<li><a class="reference internal" href="#gradient-descent-for-linear-regression">Gradient descent for linear regression(应用于线性回归的的梯度下降算法)</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="introduction.html"
+                        title="previous chapter">引言</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="../class/introduction.html"
+                        title="next chapter">Introduction</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="../../_sources/machine learning/coursera/linear-regression-with-one-variable.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../class/introduction.html" title="Introduction"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="introduction.html" title="引言"
+             >previous</a> |</li>
+        <li><a href="../../index.html">klb3713&#39;s notebook</a> &raquo;</li>
+          <li><a href="../index.html" >机器学习</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2013, klb3713.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
+    </div>
+  </body>
+</html>
