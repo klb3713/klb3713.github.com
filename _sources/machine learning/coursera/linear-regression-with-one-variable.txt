@@ -26,6 +26,7 @@ Model representation(模型表示)
 （预测一个实值输出）。训练集表示如下：
 
 .. image:: images/2-1.png
+   :scale: 70 %
 
 其中：
 
@@ -38,6 +39,7 @@ y's = “输出”变量，也称之为“目标”变量
 对于房价预测问题，学习过程可用下图表示：
 
 .. image:: images/2-2.png
+   :scale: 70 %
 
 其中x代表房屋的大小，y代表预测的价格，h(hypothesis)将输入变量 x 映射到输出变量 y，如何表示h?
 
@@ -56,6 +58,7 @@ Cost function(代价函数，成本函数)
 :math:`\theta_i` 为参数, 如何求 :math:`\theta_i` ?
 
 .. image:: images/2-3.png
+   :scale: 70 %
 
 构想： 对于训练集(x, y)，选取参数 :math:`\theta_0, \theta_1` 使得 :math:`h_\theta(x)` 尽可能的接近y。
 
@@ -77,10 +80,12 @@ Cost function intuition I(直观解释1)
 直观来看，线性回归主要包括如下四大部分，分别是Hypothesis, Parameters, Cost Function, Goal:
 
 .. image:: images/2-4.png
+   :scale: 70 %
 
 这里作者给出了一个简化版的Cost function解释，也就是令 :math:`\theta_0` 为0：
 
 .. image:: images/2-5.png
+   :scale: 70 %
 
 然后令 :math:`\theta_1` 分别取1、0.5、-0.5等值，同步对比 :math:`h_\theta(x)`
 和 :math:`J(\theta_0, \theta_1)` 在二维坐标系中的变化情况，具体可参考原PPT中的对比图，很直观。
@@ -112,24 +117,29 @@ Gradient descent(梯度下降)
 对于任一 :math:`J(\theta_0, \theta_1)`, 初始位置不同，最终达到的极小值点也不同，例如以下两个例子：
 
 .. image:: images/2-6.png
+   :scale: 70 %
 
 .. image:: images/2-7.png
+   :scale: 70 %
 
 **梯度下降算法：**
 
 重复下面的公式直到收敛：
 
 .. image:: images/2-8.png
+   :scale: 70 %
 
 **举例：**
 
 参数正确的更新过程如下（同步更新）：
 
 .. image:: images/2-9.png
+   :scale: 70 %
 
 错误的更新过程如下：
 
 .. image:: images/2-10.png
+   :scale: 70 %
 
 Gradient descent intuition(梯度下降直观解释)
 -----------------------------------------------
@@ -140,6 +150,7 @@ Gradient descent intuition(梯度下降直观解释)
 对于learning rate(又称为步长)来说:
 
 .. image:: images/2-11.png
+   :scale: 70 %
 
 如果 :math:`\alpha` 过小，梯度下降可能很慢；如果过大，梯度下降有可能“迈过”（overshoot）最小点，
 并且有可能收敛失败，并且产生“分歧”(diverge)
@@ -147,6 +158,7 @@ Gradient descent intuition(梯度下降直观解释)
 梯度下降可以使函数收敛到一个局部最小值，特别对于learning rate :math:`\alpha` 是固定值的时候：
 
 .. image:: images/2-12.png
+   :scale: 70 %
 
 当函数接近局部最小值的时候，梯度下降法将自动的采取“小步子”， 所以没有必要随着时间的推移减小learning rate.
 
@@ -158,18 +170,22 @@ Gradient descent for linear regression(应用于线性回归的的梯度下降�
 梯度下降算法：
 
 .. image:: images/2-13.png
+   :scale: 70 %
 
 线性回归模型：
 
 .. image:: images/2-14.png
+   :scale: 70 %
 
 :math:`J(\theta_0, \theta_1)` 对 :math:`\theta_0, \theta_1` 求导得：
 
 .. image:: images/2-15.png
+   :scale: 70 %
 
 在梯度下降算法中进行替换，就得到单变量线性回归梯度下降算法：
 
 .. image:: images/2-16.png
+   :scale: 70 %
 
 详细的图形举例请参考官方PPT，主要是在等高线图举例梯度下降的收敛过程，
 逐步逼近最小值点，其中一幅图说明：线性回归函数是凸函数(convex function)，具有碗状（bowl shape)。

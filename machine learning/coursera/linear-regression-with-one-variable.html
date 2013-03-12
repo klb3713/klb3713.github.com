@@ -75,13 +75,13 @@
 <p>回到 <a class="reference internal" href="introduction.html"><em>引言</em></a> 中的房屋价格预测问题，首先它是一个有监督学习的问题
 （对于每个样本的输入，都有正确的输出或者答案），同时它也是一个回归问题
 （预测一个实值输出）。训练集表示如下：</p>
-<img alt="../../_images/2-1.png" src="../../_images/2-1.png" />
+<a class="reference internal image-reference" href="../../_images/2-1.png"><img alt="../../_images/2-1.png" src="../../_images/2-1.png" style="width: 421.4px; height: 206.5px;" /></a>
 <p>其中：</p>
 <p>m = 训练样本的数目</p>
 <p>x&#8217;s = “输入”变量，也称之为特征</p>
 <p>y&#8217;s = “输出”变量，也称之为“目标”变量</p>
 <p>对于房价预测问题，学习过程可用下图表示：</p>
-<img alt="../../_images/2-2.png" src="../../_images/2-2.png" />
+<a class="reference internal image-reference" href="../../_images/2-2.png"><img alt="../../_images/2-2.png" src="../../_images/2-2.png" style="width: 333.9px; height: 237.3px;" /></a>
 <p>其中x代表房屋的大小，y代表预测的价格，h(hypothesis)将输入变量 x 映射到输出变量 y，如何表示h?</p>
 <p>事实上Hypothesis可以表示成如下形式：</p>
 <div class="math">
@@ -92,7 +92,7 @@
 <h2>Cost function(代价函数，成本函数)<a class="headerlink" href="#cost-function" title="Permalink to this headline">¶</a></h2>
 <p>对于Hypothesis: <span class="math">\(h_\theta(x) = \theta_0 + \theta_1 x\)</span>,
 <span class="math">\(\theta_i\)</span> 为参数, 如何求 <span class="math">\(\theta_i\)</span> ?</p>
-<img alt="../../_images/2-3.png" src="../../_images/2-3.png" />
+<a class="reference internal image-reference" href="../../_images/2-3.png"><img alt="../../_images/2-3.png" src="../../_images/2-3.png" style="width: 290.5px; height: 209.3px;" /></a>
 <p>构想： 对于训练集(x, y)，选取参数 <span class="math">\(\theta_0, \theta_1\)</span> 使得 <span class="math">\(h_\theta(x)\)</span> 尽可能的接近y。</p>
 <p>如何做呢？一种做法就是求训练集的平方误差函数（squared error function），Cost Function可表示为:</p>
 <div class="math">
@@ -104,9 +104,9 @@
 <div class="section" id="cost-function-intuition-i-1">
 <h2>Cost function intuition I(直观解释1)<a class="headerlink" href="#cost-function-intuition-i-1" title="Permalink to this headline">¶</a></h2>
 <p>直观来看，线性回归主要包括如下四大部分，分别是Hypothesis, Parameters, Cost Function, Goal:</p>
-<img alt="../../_images/2-4.png" src="../../_images/2-4.png" />
+<a class="reference internal image-reference" href="../../_images/2-4.png"><img alt="../../_images/2-4.png" src="../../_images/2-4.png" style="width: 334.6px; height: 308.0px;" /></a>
 <p>这里作者给出了一个简化版的Cost function解释，也就是令 <span class="math">\(\theta_0\)</span> 为0：</p>
-<img alt="../../_images/2-5.png" src="../../_images/2-5.png" />
+<a class="reference internal image-reference" href="../../_images/2-5.png"><img alt="../../_images/2-5.png" src="../../_images/2-5.png" style="width: 284.9px; height: 332.5px;" /></a>
 <p>然后令 <span class="math">\(\theta_1\)</span> 分别取1、0.5、-0.5等值，同步对比 <span class="math">\(h_\theta(x)\)</span>
 和 <span class="math">\(J(\theta_0, \theta_1)\)</span> 在二维坐标系中的变化情况，具体可参考原PPT中的对比图，很直观。</p>
 </div>
@@ -129,40 +129,40 @@
 直到达到一个我们满意的最小值；</li>
 </ol>
 <p>对于任一 <span class="math">\(J(\theta_0, \theta_1)\)</span>, 初始位置不同，最终达到的极小值点也不同，例如以下两个例子：</p>
-<img alt="../../_images/2-6.png" src="../../_images/2-6.png" />
-<img alt="../../_images/2-7.png" src="../../_images/2-7.png" />
+<a class="reference internal image-reference" href="../../_images/2-6.png"><img alt="../../_images/2-6.png" src="../../_images/2-6.png" style="width: 529.2px; height: 288.4px;" /></a>
+<a class="reference internal image-reference" href="../../_images/2-7.png"><img alt="../../_images/2-7.png" src="../../_images/2-7.png" style="width: 522.9px; height: 272.3px;" /></a>
 <p><strong>梯度下降算法：</strong></p>
 <p>重复下面的公式直到收敛：</p>
-<img alt="../../_images/2-8.png" src="../../_images/2-8.png" />
+<a class="reference internal image-reference" href="../../_images/2-8.png"><img alt="../../_images/2-8.png" src="../../_images/2-8.png" style="width: 529.9px; height: 157.5px;" /></a>
 <p><strong>举例：</strong></p>
 <p>参数正确的更新过程如下（同步更新）：</p>
-<img alt="../../_images/2-9.png" src="../../_images/2-9.png" />
+<a class="reference internal image-reference" href="../../_images/2-9.png"><img alt="../../_images/2-9.png" src="../../_images/2-9.png" style="width: 301.0px; height: 146.3px;" /></a>
 <p>错误的更新过程如下：</p>
-<img alt="../../_images/2-10.png" src="../../_images/2-10.png" />
+<a class="reference internal image-reference" href="../../_images/2-10.png"><img alt="../../_images/2-10.png" src="../../_images/2-10.png" style="width: 288.4px; height: 141.4px;" /></a>
 </div>
 <div class="section" id="gradient-descent-intuition">
 <h2>Gradient descent intuition(梯度下降直观解释)<a class="headerlink" href="#gradient-descent-intuition" title="Permalink to this headline">¶</a></h2>
 <p>举例，对于一个简化的 <span class="math">\(J(\theta_1)\)</span> 来说，无论抛物线的左边还是右边，
 在梯度下降算法下， <span class="math">\(\theta_1\)</span> 都是保持正确的方向（递增或递减）</p>
 <p>对于learning rate(又称为步长)来说:</p>
-<img alt="../../_images/2-11.png" src="../../_images/2-11.png" />
+<a class="reference internal image-reference" href="../../_images/2-11.png"><img alt="../../_images/2-11.png" src="../../_images/2-11.png" style="width: 216.3px; height: 58.8px;" /></a>
 <p>如果 <span class="math">\(\alpha\)</span> 过小，梯度下降可能很慢；如果过大，梯度下降有可能“迈过”（overshoot）最小点，
 并且有可能收敛失败，并且产生“分歧”(diverge)</p>
 <p>梯度下降可以使函数收敛到一个局部最小值，特别对于learning rate <span class="math">\(\alpha\)</span> 是固定值的时候：</p>
-<img alt="../../_images/2-12.png" src="../../_images/2-12.png" />
+<a class="reference internal image-reference" href="../../_images/2-12.png"><img alt="../../_images/2-12.png" src="../../_images/2-12.png" style="width: 505.4px; height: 262.5px;" /></a>
 <p>当函数接近局部最小值的时候，梯度下降法将自动的采取“小步子”， 所以没有必要随着时间的推移减小learning rate.</p>
 <p>关于梯度下降算法，可以参考 <a class="reference external" href="http://zh.wikipedia.org/wiki/%E6%A2%AF%E5%BA%A6%E4%B8%8B%E9%99%8D%E6%B3%95">维基百科</a> 的介绍</p>
 </div>
 <div class="section" id="gradient-descent-for-linear-regression">
 <h2>Gradient descent for linear regression(应用于线性回归的的梯度下降算法)<a class="headerlink" href="#gradient-descent-for-linear-regression" title="Permalink to this headline">¶</a></h2>
 <p>梯度下降算法：</p>
-<img alt="../../_images/2-13.png" src="../../_images/2-13.png" />
+<a class="reference internal image-reference" href="../../_images/2-13.png"><img alt="../../_images/2-13.png" src="../../_images/2-13.png" style="width: 282.1px; height: 219.1px;" /></a>
 <p>线性回归模型：</p>
-<img alt="../../_images/2-14.png" src="../../_images/2-14.png" />
+<a class="reference internal image-reference" href="../../_images/2-14.png"><img alt="../../_images/2-14.png" src="../../_images/2-14.png" style="width: 320.6px; height: 175.7px;" /></a>
 <p><span class="math">\(J(\theta_0, \theta_1)\)</span> 对 <span class="math">\(\theta_0, \theta_1\)</span> 求导得：</p>
-<img alt="../../_images/2-15.png" src="../../_images/2-15.png" />
+<a class="reference internal image-reference" href="../../_images/2-15.png"><img alt="../../_images/2-15.png" src="../../_images/2-15.png" style="width: 540.4px; height: 128.8px;" /></a>
 <p>在梯度下降算法中进行替换，就得到单变量线性回归梯度下降算法：</p>
-<img alt="../../_images/2-16.png" src="../../_images/2-16.png" />
+<a class="reference internal image-reference" href="../../_images/2-16.png"><img alt="../../_images/2-16.png" src="../../_images/2-16.png" style="width: 607.6px; height: 265.3px;" /></a>
 <p>详细的图形举例请参考官方PPT，主要是在等高线图举例梯度下降的收敛过程，
 逐步逼近最小值点，其中一幅图说明：线性回归函数是凸函数(convex function)，具有碗状（bowl shape)。</p>
 <p><strong>总结</strong>： 这里的梯度下降算法也称为&#8221;Batch&#8221; 梯度下降: 梯度下降的每一步都使用了所有的训练样本。</p>

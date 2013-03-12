@@ -95,9 +95,9 @@ improves with experience E.</li>
 <h2>有监督学习详解<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h2>
 <p>有监督学习主要会提供一些标注样本，分为两大问题：回归和分类</p>
 <p>房屋价格预测-回归(Regression): 预测连续的输出值（价格)</p>
-<img alt="../../_images/house_price.png" src="../../_images/house_price.png" />
+<a class="reference internal image-reference" href="../../_images/house_price.png"><img alt="../../_images/house_price.png" src="../../_images/house_price.png" style="width: 482.3px; height: 219.8px;" /></a>
 <p>乳腺癌（良性，恶性）预测问题-分类(Classification): 预测离散的输出值(0, 1)</p>
-<img alt="../../_images/breast_cancer.png" src="../../_images/breast_cancer.png" />
+<a class="reference internal image-reference" href="../../_images/breast_cancer.png"><img alt="../../_images/breast_cancer.png" src="../../_images/breast_cancer.png" style="width: 640.5px; height: 296.8px;" /></a>
 <p>这两者的区别在于分类的output为离散的，而回归的output为连续的，这样讲可能比较抽象，比如上面的例子就是回归，因为output为price，虽然看起来price是离散的，但是他的值是可以无限制的，因此是连续的，而下图为分类的例子，因为output=恶性or良性，可能的取值就两个值，因此为回归。</p>
 </div>
 <div class="section" id="id6">
@@ -106,17 +106,17 @@ improves with experience E.</li>
 我们的目标是从中找出结构，并将其分组，如下图，是有监督学习和无监督学习的对比，
 无监督学习给出的是聚类的例子，每个数据都是以原点的形式出现的，
 但是我们能够很清晰地将这些点分成两组(group into)：</p>
-<img alt="../../_images/supervised.png" src="../../_images/supervised.png" />
-<img alt="../../_images/unsupervised.png" src="../../_images/unsupervised.png" />
+<a class="reference internal image-reference" href="../../_images/supervised.png"><img alt="../../_images/supervised.png" src="../../_images/supervised.png" style="width: 351.4px; height: 338.8px;" /></a>
+<a class="reference internal image-reference" href="../../_images/unsupervised.png"><img alt="../../_images/unsupervised.png" src="../../_images/unsupervised.png" style="width: 339.5px; height: 335.3px;" /></a>
 <p><strong>非监督学习的例子</strong></p>
 <ul class="simple">
 <li>Google News，会将一些新闻进行聚类（分组），即每个大类的新闻下面都会有多个URL，这些URL虽然来自不同的网站，但是都是这一类新闻，比如：</li>
 </ul>
-<img alt="../../_images/google_news.png" src="../../_images/google_news.png" />
+<a class="reference internal image-reference" href="../../_images/google_news.png"><img alt="../../_images/google_news.png" src="../../_images/google_news.png" style="width: 716.8px; height: 174.3px;" /></a>
 <ul class="simple">
 <li>Market segmentation：将客户分组为几组，对每组客户进行不同的销售手段，如下图：</li>
 </ul>
-<img alt="../../_images/market.png" src="../../_images/market.png" />
+<a class="reference internal image-reference" href="../../_images/market.png"><img alt="../../_images/market.png" src="../../_images/market.png" style="width: 282.8px; height: 212.1px;" /></a>
 <p>基因序列分析，社会网络分析等...</p>
 <ul class="simple">
 <li>特别的例子： <strong>鸡尾酒会问题（Cocktail party problem）</strong></li>
@@ -124,7 +124,7 @@ improves with experience E.</li>
 <p>“ 鸡尾酒会问题”（cocktail party problem）是在计算机语音识别领域的一个问题，
 当前语音识别技术已经可以以较高精度识别一个人所讲的话，但是当说话的人数为两人或者多人时，
 语音识别率就会极大的降低，这一难题被称为鸡尾酒会问题。</p>
-<img alt="../../_images/cocktail.png" src="../../_images/cocktail.png" />
+<a class="reference internal image-reference" href="../../_images/cocktail.png"><img alt="../../_images/cocktail.png" src="../../_images/cocktail.png" style="width: 399.7px; height: 312.9px;" /></a>
 <p>鸡尾酒会问题算法（一行代码）:</p>
 <div class="highlight-python"><pre>[W,s,v] = svd((repmat(sum(x.*x,1),size(x,1),1).*x)*x');</pre>
 </div>

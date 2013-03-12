@@ -52,10 +52,12 @@
 房屋价格预测-回归(Regression): 预测连续的输出值（价格)
 
 .. image:: images/house_price.png
+   :scale: 70 %
 
 乳腺癌（良性，恶性）预测问题-分类(Classification): 预测离散的输出值(0, 1)
 
 .. image:: images/breast_cancer.png
+   :scale: 70 %
 
 这两者的区别在于分类的output为离散的，而回归的output为连续的，这样讲可能比较抽象，比如上面的例子就是回归，因为output为price，虽然看起来price是离散的，但是他的值是可以无限制的，因此是连续的，而下图为分类的例子，因为output=恶性or良性，可能的取值就两个值，因此为回归。
 
@@ -68,19 +70,22 @@
 但是我们能够很清晰地将这些点分成两组(group into)：
 
 .. image:: images/supervised.png
+   :scale: 70 %
 
 .. image:: images/unsupervised.png
-
+   :scale: 70 %
 
 **非监督学习的例子**
 
 *   Google News，会将一些新闻进行聚类（分组），即每个大类的新闻下面都会有多个URL，这些URL虽然来自不同的网站，但是都是这一类新闻，比如：
 
 .. image:: images/google_news.png
+   :scale: 70 %
 
 *   Market segmentation：将客户分组为几组，对每组客户进行不同的销售手段，如下图：
 
 .. image:: images/market.png
+   :scale: 70 %
 
 基因序列分析，社会网络分析等...
 
@@ -91,6 +96,7 @@
 语音识别率就会极大的降低，这一难题被称为鸡尾酒会问题。
 
 .. image:: images/cocktail.png
+   :scale: 70 %
 
 鸡尾酒会问题算法（一行代码）::
 
