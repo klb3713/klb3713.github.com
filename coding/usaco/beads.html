@@ -1,0 +1,233 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>USACO 1.1 Broken Necklace &mdash; klb3713&#39;s notebook</title>
+    
+    <link rel="stylesheet" href="../../_static/nature.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../',
+        VERSION:     '1.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="author" title="About these documents" href="../../about.html" />
+    <link rel="top" title="klb3713&#39;s notebook" href="../../index.html" />
+    <link rel="up" title="编程练习" href="../index.html" />
+    <link rel="next" title="读书笔记" href="../../book/index.html" />
+    <link rel="prev" title="编程练习" href="../index.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../../book/index.html" title="读书笔记"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="../index.html" title="编程练习"
+             accesskey="P">previous</a> |</li>
+        <li><a href="../../index.html">klb3713&#39;s notebook</a> &raquo;</li>
+          <li><a href="../index.html" accesskey="U">编程练习</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="usaco-1-1-broken-necklace">
+<h1>USACO 1.1 Broken Necklace<a class="headerlink" href="#usaco-1-1-broken-necklace" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="id1">
+<h2>题目描述<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+<p>You have a necklace of N red, white, or blue beads (3&lt;=N&lt;=350) some of which are red, others blue, and others white, arranged at random. Here are two examples for n=29:</p>
+<div class="highlight-python"><pre>            1 2                               1 2
+        r b b r                           b r r b
+      r         b                       b         b
+     r           r                     b           r
+    r             r                   w             r
+   b               r                 w               w
+  b                 b               r                 r
+  b                 b               b                 b
+  b                 b               r                 b
+   r               r                 b               r
+    b             r                   r             r
+     b           r                     r           r
+       r       r                         r       b
+         r b r                             r r w
+        Figure A                         Figure B
+
+r red bead
+b blue bead
+w white bead</pre>
+</div>
+<p>The beads considered first and second in the text that follows have been marked in the picture.</p>
+<p>The configuration in Figure A may be represented as a string of b&#8217;s and r&#8217;s, where b represents a blue bead and r represents a red one, as follows:</p>
+<div class="highlight-python"><pre>brbrrrbbbrrrrrbrrbbrbbbbrrrrb .</pre>
+</div>
+<p>Suppose you are to break the necklace at some point, lay it out straight, and then collect beads of the same color from one end until you reach a bead of a different color, and do the same for the other end (which might not be of the same color as the beads collected before this).</p>
+<p>Determine the point where the necklace should be broken so that the most number of beads can be collected.</p>
+<p><strong>Example</strong></p>
+<p>For example, for the necklace in Figure A, 8 beads can be collected, with the breaking point either between bead 9 and bead 10 or else between bead 24 and bead 25.</p>
+<p>In some necklaces, white beads had been included as shown in Figure B above. When collecting beads, a white bead that is encountered may be treated as either red or blue and then painted with the desired color. The string that represents this configuration will include the three symbols r, b and w.</p>
+<p>Write a program to determine the largest number of beads that can be collected from a supplied necklace.</p>
+<p><strong>PROGRAM NAME</strong> : beads</p>
+<p><strong>INPUT FORMAT</strong></p>
+<div class="highlight-python"><pre>Line 1:  N, the number of beads
+Line 2:  a string of N characters, each of which is r, b, or w</pre>
+</div>
+<p><strong>SAMPLE INPUT</strong> (file beads.in)</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="mi">29</span>
+<span class="n">wwwbbrwrbrbrrbrbrwrwwrbwrwrrb</span>
+</pre></div>
+</div>
+<p><strong>OUTPUT FORMAT</strong></p>
+<p>A single line containing the maximum of number of beads that can be collected from the supplied necklace.</p>
+<p><strong>SAMPLE OUTPUT</strong> (file beads.out)</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="mi">11</span>
+</pre></div>
+</div>
+<p><strong>OUTPUT EXPLANATION</strong></p>
+<p>Consider two copies of the beads (kind of like being able to runaround the ends). The string of 11 is marked.</p>
+<div class="highlight-python"><pre>wwwbbrwrbrbrrbrbrwrwwrbwrwrrb wwwbbrwrbrbrrbrbrwrwwrbwrwrrb
+                       ****** *****</pre>
+</div>
+</div>
+<div class="section" id="id2">
+<h2>解题报告<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<p>这个题目我的思路和网上 <a class="reference external" href="http://zqynux.blog.163.com/blog/static/1674995972010631968443/">这篇</a> 类似, 只是在最终实现卡住了，编程能力还是不过关。</p>
+<p>用a表示前一段的连续长度, b表示当前段的连续长度, w表示在当前出现的w的连续数目，结果取最大的a+b值。对于对于循环的话, 就把字符串f再复制一份到f后面。详情见代码：</p>
+<div class="highlight-c"><div class="highlight"><pre><span class="cm">/*</span>
+<span class="cm">ID: klbgyx71</span>
+<span class="cm">LANG: C</span>
+<span class="cm">PROG: beads</span>
+<span class="cm">*/</span>
+
+<span class="cp">#include &lt;stdio.h&gt;</span>
+<span class="cp">#include &lt;string.h&gt;</span>
+
+<span class="kt">int</span> <span class="nf">main</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kt">int</span> <span class="n">i</span><span class="p">,</span> <span class="n">limit</span><span class="p">;</span>
+    <span class="kt">int</span> <span class="n">a</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">b</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">w</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="kt">char</span> <span class="n">c</span> <span class="o">=</span> <span class="sc">&#39;0&#39;</span><span class="p">;</span>   <span class="cm">/*当前段的珠子颜色 b or r*/</span>
+    <span class="kt">int</span> <span class="n">m</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="kt">int</span> <span class="n">n</span><span class="p">;</span>
+    <span class="kt">char</span> <span class="n">f</span><span class="p">[</span><span class="mi">701</span><span class="p">];</span>
+
+    <span class="kt">FILE</span> <span class="o">*</span><span class="n">fin</span>  <span class="o">=</span> <span class="n">fopen</span> <span class="p">(</span><span class="s">&quot;beads.in&quot;</span><span class="p">,</span> <span class="s">&quot;r&quot;</span><span class="p">);</span>
+    <span class="kt">FILE</span> <span class="o">*</span><span class="n">fout</span> <span class="o">=</span> <span class="n">fopen</span> <span class="p">(</span><span class="s">&quot;beads.out&quot;</span><span class="p">,</span> <span class="s">&quot;w&quot;</span><span class="p">);</span>
+    <span class="n">fscanf</span> <span class="p">(</span><span class="n">fin</span><span class="p">,</span> <span class="s">&quot;%d %s&quot;</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">n</span><span class="p">,</span> <span class="n">f</span><span class="p">);</span>
+    <span class="n">memcpy</span><span class="p">(</span><span class="n">f</span><span class="o">+</span><span class="n">n</span><span class="p">,</span> <span class="n">f</span><span class="p">,</span> <span class="n">n</span><span class="p">);</span>
+    <span class="n">limit</span> <span class="o">=</span> <span class="mi">2</span><span class="o">*</span><span class="n">n</span><span class="p">;</span>
+
+    <span class="k">for</span><span class="p">(</span><span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">limit</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">){</span>
+        <span class="k">if</span><span class="p">(</span><span class="n">f</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">==</span> <span class="sc">&#39;w&#39;</span><span class="p">){</span>
+            <span class="n">b</span><span class="o">++</span><span class="p">;</span>
+            <span class="n">w</span><span class="o">++</span><span class="p">;</span>
+        <span class="p">}</span><span class="k">else</span> <span class="k">if</span><span class="p">(</span><span class="n">f</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">==</span> <span class="n">c</span><span class="p">){</span>
+            <span class="n">b</span><span class="o">++</span><span class="p">;</span>
+            <span class="n">w</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+        <span class="p">}</span><span class="k">else</span><span class="p">{</span>
+            <span class="k">if</span><span class="p">(</span><span class="n">b</span> <span class="o">+</span> <span class="n">a</span> <span class="o">&gt;</span> <span class="n">m</span><span class="p">){</span>
+                <span class="n">m</span> <span class="o">=</span> <span class="n">b</span> <span class="o">+</span> <span class="n">a</span><span class="p">;</span>
+            <span class="p">}</span>
+            <span class="n">a</span> <span class="o">=</span> <span class="n">b</span> <span class="o">-</span> <span class="n">w</span><span class="p">;</span>
+            <span class="n">b</span> <span class="o">=</span> <span class="n">w</span> <span class="o">+</span> <span class="mi">1</span><span class="p">;</span>
+            <span class="n">w</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+            <span class="n">c</span> <span class="o">=</span> <span class="n">f</span><span class="p">[</span><span class="n">i</span><span class="p">];</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+    <span class="k">if</span><span class="p">(</span><span class="n">a</span> <span class="o">+</span> <span class="n">b</span> <span class="o">&gt;</span> <span class="n">m</span><span class="p">){</span>
+        <span class="n">m</span> <span class="o">=</span> <span class="n">b</span> <span class="o">+</span> <span class="n">a</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="n">fprintf</span><span class="p">(</span><span class="n">fout</span><span class="p">,</span> <span class="s">&quot;%d</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span> <span class="n">m</span> <span class="o">&gt;</span> <span class="n">n</span> <span class="o">?</span> <span class="n">n</span> <span class="o">:</span> <span class="n">m</span><span class="p">);</span>
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="../../index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">USACO 1.1 Broken Necklace</a><ul>
+<li><a class="reference internal" href="#id1">题目描述</a></li>
+<li><a class="reference internal" href="#id2">解题报告</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="../index.html"
+                        title="previous chapter">编程练习</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="../../book/index.html"
+                        title="next chapter">读书笔记</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="../../_sources/coding/usaco/beads.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../../book/index.html" title="读书笔记"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="../index.html" title="编程练习"
+             >previous</a> |</li>
+        <li><a href="../../index.html">klb3713&#39;s notebook</a> &raquo;</li>
+          <li><a href="../index.html" >编程练习</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2013, klb3713.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
+    </div>
+  </body>
+</html>

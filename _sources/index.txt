@@ -13,6 +13,7 @@ CST笔记
    :maxdepth: 2
 
    machine learning/index
+   coding/index
 
 
 生活 读书 新知
@@ -33,3 +34,4 @@ Indices and tables
 * :ref:`search`
 * `rst docs <docs/index.html>`_
 * :doc:`about`
+* :doc:`test`
