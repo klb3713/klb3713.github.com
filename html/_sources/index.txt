@@ -34,3 +34,4 @@ Indices and tables
 * :ref:`search`
 * `rst docs <docs/index.html>`_
 * :doc:`about`
+* :doc:`test`
