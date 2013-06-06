@@ -1,0 +1,388 @@
+
+<!DOCTYPE html><html>
+<head>
+    <meta http-equiv="Content-Type"
+          content="text/html; charset=utf-8"/>
+    
+        <title>Python Challenge &mdash; klb3713&#39;s notebook</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href='http://fonts.googleapis.com/css?family=Crete+Round' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="../_static/sphinx-bootstrap.css" type="text/css"/>
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css"/>
+    <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+        <script type="text/javascript">
+            var DOCUMENTATION_OPTIONS = {
+                URL_ROOT:'../',
+                VERSION:'1.0',
+                COLLAPSE_INDEX:false,
+                FILE_SUFFIX:'.html',
+                HAS_SOURCE:  true
+            };
+        </script>
+            <script type="text/javascript" src="../_static/jquery.js"></script>
+            <script type="text/javascript" src="../_static/underscore.js"></script>
+            <script type="text/javascript" src="../_static/doctools.js"></script>
+            <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+            <script type="text/javascript" src="../_static/bootstrap-dropdown.js"></script>
+            <link rel="author" title="About these documents"
+                  href="../about.html"/>
+        <link rel="top" title="klb3713&#39;s notebook" href="../index.html"/>
+            <link rel="up" title="编程练习" href="index.html"/>
+            <link rel="next" title="读书笔记" href="../book/index.html"/>
+            <link rel="prev" title="USACO 1.1 Broken Necklace" href="usaco/beads.html"/> 
+    <script type="text/javascript" src="https://apis.google.com/js/plusone.js"></script>
+    
+        <!-- analytics -->
+        <script type="text/javascript">
+            var _gaq = _gaq || [];
+            _gaq.push(['_setAccount', 'UA-41454165-1']);
+            
+            _gaq.push(['_trackPageview']);
+
+            (function () {
+                var ga = document.createElement('script');
+                ga.type = 'text/javascript';
+                ga.async = true;
+                ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+                var s = document.getElementsByTagName('script')[0];
+                s.parentNode.insertBefore(ga, s);
+            })();
+        </script>
+    
+</head>
+<body>
+
+    <div class="navbar navbar-static-top">
+        <div class="navbar-inner">
+            <div class="container">
+
+    <div class="related">
+        <ul class="nav">
+                <li class=""><a class="brand" href="../index.html">notebook</a></li>
+                <li>
+                    <a href="../genindex.html"
+                       title="General Index" accesskey="I">index</a>
+                </li>
+                <li>
+                    <a href="../book/index.html"
+                       title="读书笔记" accesskey="N">next</a>
+                </li>
+                <li>
+                    <a href="usaco/beads.html"
+                       title="USACO 1.1 Broken Necklace" accesskey="P">previous</a>
+                </li>
+                <li><a href="index.html"
+                        accesskey="U">编程练习</a>
+                </li> 
+        </ul>
+    </div>
+                <div class="pull-right">
+                    
+        <form class="navbar-search" action="../search.html"
+              method="get">
+            <input type="text" name="q" placeholder="search"/>
+            <input type="hidden" name="check_keywords" value="yes"/>
+            <input type="hidden" name="area" value="default"/>
+        </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+<ul class="quick-links">
+    <li><strong>Quick links</strong></li>
+    <li>
+        <a href="https://github.com/klb3713/notebook/">GitHub</a>
+    </li>
+    <li>
+        <a href="https://github.com/klb3713/notebook/issues?state=open">Issues</a>
+    </li>
+    <li class="divider">&middot;</li>
+    <li>
+        <iframe class="github-btn"
+                src="http://ghbtns.com/github-btn.html?user=klb3713&repo=notebook&type=watch&count=true"
+                allowtransparency="true" frameborder="0" scrolling="0"
+                width="110px" height="20px"></iframe>
+    </li>
+    <li>
+        <iframe class="github-btn"
+                src="http://ghbtns.com/github-btn.html?user=klb3713&repo=notebook&type=fork&count=true"
+                allowtransparency="true" frameborder="0" scrolling="0"
+                width="94px" height="20px"></iframe>
+    </li>
+
+    <li class="divider">&middot;</li>
+    <li class="follow-btn">
+        <a href="https://twitter.com/klb3713"
+           class="twitter-follow-button" data-width="145px"
+           data-link-color="#0069D6" data-show-count="false">Follow
+            @klb3713</a>
+    </li>
+    <li class="tweet-btn">
+        <a href="https://twitter.com/share" class="twitter-share-button"
+           data-url="www.klb3713.com" data-count="horizontal"
+           data-via="twbootstrap"
+           data-related="klb3713:Creator of notebook">Tweet</a>
+    </li>
+    <li class="plusone-container">
+        <g:plusone size="medium"></g:plusone>
+    </li>
+</ul>  
+    <div class="container">
+        <div class="content row">
+                <div class="span9">
+                    
+  <div class="section" id="python-challenge">
+<h1>Python Challenge<a class="headerlink" href="#python-challenge" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="level-0">
+<h2>Level 0 <a class="footnote-reference" href="#id3" id="id1">[1]</a><a class="headerlink" href="#level-0" title="Permalink to this headline">¶</a></h2>
+<a class="reference internal image-reference" href="../_images/calc.jpg"><img alt="../_images/calc.jpg" src="../_images/calc.jpg" style="width: 320.0px; height: 240.0px;" /></a>
+<p>Hint: try to change the URL address.</p>
+<p>第零关主要让人熟悉游戏规则和形式。首先观察标签栏主题显示的是warming up，表明这关的主题是热身。页面图片下标注一行小提示尝试改变url的地址。在没有别的提示下，明显是改成图片内的内容， 2^38。打开Python解释器，输入&#8221;2**38&#8221;，显示答案&#8221;274877906944L&#8221;。去掉L替换URL中的0得到下一关地址。</p>
+<p><a class="reference external" href="http://www.pythonchallenge.com/pc/def/map.html">http://www.pythonchallenge.com/pc/def/map.html</a></p>
+<p>这一关想表明的是Python中的整数的储存。Python中的整数相当于C中的长整型(long), 32位的机器上整型取值范围为 -2147483648至2147483647, 64位机器上为-9223372036854775808到9223372036854775807。Python的长整型是无限制的，只要内存允许。很相似的是Python里的无限list。一个很著名的例子是使用生成器(generator)，就可以生成一个无限长的Fibonacci数列：</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="k">def</span> <span class="nf">fib</span><span class="p">():</span>
+    <span class="n">a</span> <span class="o">=</span> <span class="n">b</span> <span class="o">=</span> <span class="mi">1</span>
+    <span class="k">while</span> <span class="bp">True</span><span class="p">:</span>
+        <span class="k">yield</span> <span class="n">a</span>
+        <span class="n">a</span><span class="p">,</span><span class="n">b</span> <span class="o">=</span> <span class="n">b</span><span class="p">,</span><span class="n">a</span><span class="o">+</span><span class="n">b</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="level-1">
+<h2>Level 1<a class="headerlink" href="#level-1" title="Permalink to this headline">¶</a></h2>
+<a class="reference internal image-reference" href="../_images/map.jpg"><img alt="../_images/map.jpg" src="../_images/map.jpg" style="width: 320.0px; height: 240.0px;" /></a>
+<p>Hint1: K -&gt; M,  O -&gt; Q,  E -&gt; G</p>
+<p>Hint2: g fmnc wms bgblr rpylqjyrc gr zw fylb. rfyrq ufyr amknsrcpq ypc dmp. bmgle gr gl zw fylb gq glcddgagclr ylb rfyr&#8217;q ufw rfgq rcvr gq qm jmle. sqgle qrpgle.kyicrpylq() gq pcamkkclbcb. lmu ynnjw ml rfc spj.</p>
+<p>同样的首先观察标签栏主题, &#8220;what about making trans&#8221;。这个提示很有启发性。然后观察图片, K-&gt;M, O-&gt;Q, E-&gt;G, 每个字母对应其后的两个字母, 很显然的一个 <a class="reference external" href="http://zh.wikipedia.org/zh/凯撒密码">凯撒密码</a> 。最后观察图下的提示, &#8220;everybody think twice before solving this&#8221;和一堆乱码。按照图片中的方法, 把乱码还原。可以通过ASCII码与字符的转换来做（ord, chr）；或者直接使用string模块（table = string.maketrancs(from,to),  string.translate(raw_str, table)）。将转换关系运用到Hint2的字符串即可。</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">In</span> <span class="p">[</span><span class="mi">22</span><span class="p">]:</span> <span class="kn">import</span> <span class="nn">string</span>
+
+<span class="n">In</span> <span class="p">[</span><span class="mi">23</span><span class="p">]:</span> <span class="n">table</span> <span class="o">=</span> <span class="n">string</span><span class="o">.</span><span class="n">maketrans</span><span class="p">(</span> <span class="n">string</span><span class="o">.</span><span class="n">ascii_lowercase</span><span class="p">,</span> <span class="n">string</span><span class="o">.</span><span class="n">ascii_lowercase</span><span class="p">[</span><span class="mi">2</span><span class="p">:]</span><span class="o">+</span><span class="n">string</span><span class="o">.</span><span class="n">ascii_lowercase</span><span class="p">[:</span><span class="mi">2</span><span class="p">])</span>
+
+<span class="n">In</span> <span class="p">[</span><span class="mi">24</span><span class="p">]:</span> <span class="n">code</span> <span class="o">=</span> <span class="s">&quot;g fmnc wms bgblr rpylqjyrc gr zw fylb. rfyrq ufyr amknsrcpq ypc dmp. bmgle gr gl zw fylb gq glcddgagclr ylb rfyr&#39;q ufw rfgq rcvr gq qm jmle. sqgle qrpgle.kyicrpylq() gq pcamkkclbcb. lmu ynnjw ml rfc spj&quot;</span>
+
+<span class="n">In</span> <span class="p">[</span><span class="mi">25</span><span class="p">]:</span> <span class="n">code</span><span class="o">.</span><span class="n">translate</span><span class="p">(</span><span class="n">table</span><span class="p">)</span>
+<span class="n">Out</span><span class="p">[</span><span class="mi">25</span><span class="p">]:</span> <span class="s">&quot;i hope you didnt translate it by hand. thats what computers are for. doing it in by hand is inefficient and that&#39;s why this text is so long. using string.maketrans() is recommended. now apply on the url&quot;</span>
+
+<span class="n">In</span> <span class="p">[</span><span class="mi">26</span><span class="p">]:</span> <span class="s">&quot;map&quot;</span><span class="o">.</span><span class="n">translate</span><span class="p">(</span><span class="n">table</span><span class="p">)</span>
+<span class="n">Out</span><span class="p">[</span><span class="mi">26</span><span class="p">]:</span> <span class="s">&#39;ocr&#39;</span>
+</pre></div>
+</div>
+<p>得到下一关地址 <a class="reference external" href="http://www.pythonchallenge.com/pc/def/ocr.html">http://www.pythonchallenge.com/pc/def/ocr.html</a></p>
+</div>
+<div class="section" id="level-2">
+<h2>Level 2<a class="headerlink" href="#level-2" title="Permalink to this headline">¶</a></h2>
+<a class="reference internal image-reference" href="../_images/ocr.jpg"><img alt="../_images/ocr.jpg" src="../_images/ocr.jpg" style="width: 320.0px; height: 240.0px;" /></a>
+<p>Hint1: recognize the characters. maybe they are in the book,
+but MAYBE they are in the page source.</p>
+<p>这里提示查看网页的源代码，然后得到提示2</p>
+<p>Hint2: 网页源码的注释中有: find rare characters in the mess below；下面是一堆字符。显然是从这对字符中找出现次数最少的；注意忽略空白符，出现次数同样多的字符按出现次序排序。拷贝乱码字符到文件level2code.txt，处理代码如下：</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">char_count</span> <span class="o">=</span> <span class="p">{}</span>
+<span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="nb">open</span><span class="p">(</span><span class="s">&quot;level2code.txt&quot;</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">line</span><span class="p">:</span>
+        <span class="n">char_count</span><span class="o">.</span><span class="n">setdefault</span><span class="p">(</span><span class="n">c</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+        <span class="n">char_count</span><span class="p">[</span><span class="n">c</span><span class="p">]</span> <span class="o">+=</span> <span class="mi">1</span>
+
+<span class="n">sorted_chars</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">char_count</span><span class="o">.</span><span class="n">items</span><span class="p">(),</span> <span class="n">key</span><span class="o">=</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+<span class="k">print</span> <span class="n">sorted_chars</span>
+</pre></div>
+</div>
+<p>得到结果:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="p">[(</span><span class="s">&#39;a&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="p">(</span><span class="s">&#39;e&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="p">(</span><span class="s">&#39;i&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="p">(</span><span class="s">&#39;l&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="p">(</span><span class="s">&#39;q&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="p">(</span><span class="s">&#39;u&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="p">(</span><span class="s">&#39;t&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="p">(</span><span class="s">&#39;y&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="p">(</span><span class="s">&#39;</span><span class="se">\n</span><span class="s">&#39;</span><span class="p">,</span> <span class="mi">1220</span><span class="p">),</span> <span class="p">(</span><span class="s">&#39;^&#39;</span><span class="p">,</span> <span class="mi">6030</span><span class="p">),</span> <span class="p">(</span><span class="s">&#39;*&#39;</span><span class="p">,</span> <span class="mi">6034</span><span class="p">),</span> <span class="p">(</span><span class="s">&#39;&amp;&#39;</span><span class="p">,</span> <span class="mi">6043</span><span class="p">),</span> <span class="p">(</span><span class="s">&#39;$&#39;</span><span class="p">,</span> <span class="mi">6046</span><span class="p">),</span> <span class="p">(</span><span class="s">&#39;{&#39;</span><span class="p">,</span> <span class="mi">6046</span><span class="p">),</span> <span class="p">(</span><span class="s">&#39;+&#39;</span><span class="p">,</span> <span class="mi">6066</span><span class="p">),</span> <span class="p">(</span><span class="s">&#39;!&#39;</span><span class="p">,</span> <span class="mi">6079</span><span class="p">),</span> <span class="p">(</span><span class="s">&#39;%&#39;</span><span class="p">,</span> <span class="mi">6104</span><span class="p">),</span> <span class="p">(</span><span class="s">&#39;}&#39;</span><span class="p">,</span> <span class="mi">6105</span><span class="p">),</span> <span class="p">(</span><span class="s">&#39;[&#39;</span><span class="p">,</span> <span class="mi">6108</span><span class="p">),</span> <span class="p">(</span><span class="s">&#39;_&#39;</span><span class="p">,</span> <span class="mi">6112</span><span class="p">),</span> <span class="p">(</span><span class="s">&#39;#&#39;</span><span class="p">,</span> <span class="mi">6115</span><span class="p">),</span> <span class="p">(</span><span class="s">&#39;]&#39;</span><span class="p">,</span> <span class="mi">6152</span><span class="p">),</span> <span class="p">(</span><span class="s">&#39;(&#39;</span><span class="p">,</span> <span class="mi">6154</span><span class="p">),</span> <span class="p">(</span><span class="s">&#39;@&#39;</span><span class="p">,</span> <span class="mi">6157</span><span class="p">),</span> <span class="p">(</span><span class="s">&#39;)&#39;</span><span class="p">,</span> <span class="mi">6186</span><span class="p">)]</span>
+</pre></div>
+</div>
+<p>可以看出最少的字母是 &#8216;a&#8217;, &#8216;e&#8217;, &#8216;i&#8217;, &#8216;l&#8217;, &#8216;q&#8217;, &#8216;u&#8217;, &#8216;t&#8217;, &#8216;y&#8217;， 按照出现次数同样多的字符按出现次序排序</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">chars</span> <span class="o">=</span> <span class="p">[</span><span class="s">&#39;a&#39;</span><span class="p">,</span> <span class="s">&#39;e&#39;</span><span class="p">,</span> <span class="s">&#39;i&#39;</span><span class="p">,</span> <span class="s">&#39;l&#39;</span><span class="p">,</span> <span class="s">&#39;q&#39;</span><span class="p">,</span> <span class="s">&#39;u&#39;</span><span class="p">,</span> <span class="s">&#39;t&#39;</span><span class="p">,</span> <span class="s">&#39;y&#39;</span><span class="p">]</span>
+<span class="n">all_str</span> <span class="o">=</span> <span class="s">&quot;&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="nb">open</span><span class="p">(</span><span class="s">&quot;level2code.txt&quot;</span><span class="p">))</span>
+<span class="n">chars_ind</span> <span class="o">=</span> <span class="p">[(</span><span class="n">c</span><span class="p">,</span> <span class="n">all_str</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="n">c</span><span class="p">))</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">chars</span><span class="p">]</span>
+<span class="k">print</span> <span class="s">&#39;&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="n">c</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">chars_ind</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">])])</span>
+</pre></div>
+</div>
+<p>结果是 <strong>equality</strong> 下一关地址是 <a class="reference external" href="http://www.pythonchallenge.com/pc/def/equality.html">http://www.pythonchallenge.com/pc/def/equality.html</a></p>
+</div>
+<div class="section" id="level-3">
+<h2>Level 3<a class="headerlink" href="#level-3" title="Permalink to this headline">¶</a></h2>
+<a class="reference internal image-reference" href="../_images/bodyguard.jpg"><img alt="../_images/bodyguard.jpg" src="../_images/bodyguard.jpg" style="width: 320.0px; height: 240.0px;" /></a>
+<p>Hint1：One small letter, surrounded by EXACTLY three big bodyguards on each of its sides.</p>
+<p>Hint2： 网页源码中又是一堆字符。</p>
+<p>用正则表达式， 找到这样的“小写字符”：其两侧恰好都被3个大写字母占据。</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">import</span> <span class="nn">re</span>
+<span class="n">all_str</span> <span class="o">=</span> <span class="s">&quot;&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="nb">open</span><span class="p">(</span><span class="s">&quot;level3code.txt&quot;</span><span class="p">))</span>
+<span class="n">chars</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">findall</span><span class="p">(</span><span class="s">r&#39;[^A-Z][A-Z]{3}([a-z])[A-Z]{3}[^A-Z]&#39;</span><span class="p">,</span> <span class="n">all_str</span><span class="p">)</span>
+<span class="k">print</span> <span class="s">&quot;&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">chars</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>结果是 <strong>linkedlist</strong> 下一关地址是 <a class="reference external" href="http://www.pythonchallenge.com/pc/def/linkedlist.php">http://www.pythonchallenge.com/pc/def/linkedlist.php</a></p>
+</div>
+<div class="section" id="level-4">
+<h2>Level 4<a class="headerlink" href="#level-4" title="Permalink to this headline">¶</a></h2>
+<a class="reference internal image-reference" href="../_images/chainsaw.jpg"><img alt="../_images/chainsaw.jpg" src="../_images/chainsaw.jpg" style="width: 150.0px; height: 250.0px;" /></a>
+<p>Hint1： &lt;!&#8211; urllib may help. DON&#8217;T TRY ALL NOTHINGS, since it will never end. 400 times is more than enough. &#8211;&gt;</p>
+<p>Hint2：&lt;a href=&#8221;linkedlist.php?nothing=12345&#8221;&gt;</p>
+<p>打开http://www.pythonchallenge.com/pc/def/linkedlist.php?nothing=12345，结果是 <strong>and the next nothing is 44827</strong></p>
+<p>用urllib 和 re 模块继续处理下去，直到出现 Yes. Divide by two and keep going. 此时所在页面是：<a class="reference external" href="http://www.pythonchallenge.com/pc/def/linkedlist.php?nothing=16044">http://www.pythonchallenge.com/pc/def/linkedlist.php?nothing=16044</a></p>
+<p>16044/2=8022，从http://www.pythonchallenge.com/pc/def/linkedlist.php?nothing=8022 继续处理。</p>
+<p>最后出现 <strong>peak.html</strong> 下一关地址是 <a class="reference external" href="http://www.pythonchallenge.com/pc/def/peak.html">http://www.pythonchallenge.com/pc/def/peak.html</a></p>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">import</span> <span class="nn">re</span>
+<span class="kn">import</span> <span class="nn">urllib</span>
+
+<span class="nb">next</span> <span class="o">=</span> <span class="s">&quot;8022&quot;</span>
+<span class="n">url</span> <span class="o">=</span> <span class="s">&quot;&quot;</span>
+<span class="n">response</span> <span class="o">=</span> <span class="s">&quot;&quot;</span>
+<span class="k">while</span> <span class="nb">next</span><span class="p">:</span>
+    <span class="n">url</span> <span class="o">=</span> <span class="s">&quot;http://www.pythonchallenge.com/pc/def/linkedlist.php?nothing=&quot;</span><span class="o">+</span><span class="nb">next</span>
+    <span class="n">res</span> <span class="o">=</span> <span class="n">urllib</span><span class="o">.</span><span class="n">urlopen</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
+    <span class="n">response</span> <span class="o">=</span> <span class="n">res</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+
+    <span class="c"># handle the solution (last) line</span>
+    <span class="k">if</span> <span class="n">re</span><span class="o">.</span><span class="n">findall</span><span class="p">(</span><span class="s">r&#39;\.html$&#39;</span><span class="p">,</span> <span class="n">response</span><span class="p">):</span>
+        <span class="k">break</span>
+
+    <span class="n">code</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">findall</span><span class="p">(</span><span class="s">r&#39;\d+$&#39;</span><span class="p">,</span> <span class="n">response</span><span class="p">)</span>
+
+    <span class="k">if</span><span class="p">(</span><span class="n">code</span><span class="p">):</span>
+        <span class="nb">next</span> <span class="o">=</span> <span class="n">code</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="c"># handle the divide by two line</span>
+        <span class="nb">next</span> <span class="o">=</span> <span class="nb">str</span> <span class="p">(</span><span class="nb">int</span> <span class="p">(</span><span class="nb">next</span><span class="p">)</span> <span class="o">/</span> <span class="mi">2</span> <span class="p">)</span>
+
+    <span class="k">print</span> <span class="n">url</span>
+    <span class="k">print</span> <span class="n">response</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="level-5">
+<h2>Level 5<a class="headerlink" href="#level-5" title="Permalink to this headline">¶</a></h2>
+<a class="reference internal image-reference" href="../_images/peakhell.jpg"><img alt="../_images/peakhell.jpg" src="../_images/peakhell.jpg" style="width: 320.0px; height: 240.0px;" /></a>
+<p>Hint1： pronounce it</p>
+<p>Hint2:  图片中是一座小山 (hill)</p>
+<p>Hint3： 网页源码中：&lt;!&#8211; peak hell sounds familiar ? &#8211;&gt;</p>
+<p>Hint4： 网页源码中：&lt;peakhell src=&#8221;banner.p&#8221;/&gt;， banner.p 可以下载。</p>
+<p>&#8220;peak hell&#8221; 发音类似 &#8220;pickle&#8221;，用pickle 处理banner.p。</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">pickle</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">banner</span> <span class="o">=</span> <span class="n">pickle</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="nb">open</span><span class="p">(</span><span class="s">&quot;banner.p&quot;</span><span class="p">,</span> <span class="s">&#39;r&#39;</span><span class="p">))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">banner</span>
+<span class="go">[[(&#39; &#39;, 95)], [(&#39; &#39;, 14), ... (omitted)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">len</span><span class="p">(</span><span class="n">banner</span><span class="p">)</span>
+<span class="go">23</span>
+</pre></div>
+</div>
+<p>可以看到是一个嵌套list，总共23个，每个list里是一些字符-数字对，猜测数字是字符重复的次数，试着打印这些字符:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="k">for</span> <span class="n">linelist</span> <span class="ow">in</span> <span class="n">banner</span><span class="p">:</span>
+    <span class="k">print</span> <span class="s">&quot;&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">ch</span> <span class="o">*</span> <span class="n">count</span> <span class="k">for</span> <span class="n">ch</span><span class="p">,</span> <span class="n">count</span> <span class="ow">in</span> <span class="n">linelist</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>出现 <strong>channel</strong> 下一关地址是 <a class="reference external" href="http://www.pythonchallenge.com/pc/def/channel.html">http://www.pythonchallenge.com/pc/def/channel.html</a></p>
+<table class="docutils footnote" frame="void" id="id3" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id1">[1]</a></td><td><a class="reference external" href="http://www.syoon.me/python/index.html">Python Challenge的解答</a></td></tr>
+</tbody>
+</table>
+</div>
+</div>
+
+
+                    
+                        <div id="disqus_thread"></div>
+                        <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+                    
+                </div>
+                <div class="span3">
+                    
+        <div class="sphinxsidebar">
+            <div class="sphinxsidebarwrapper">
+  <h3><a href="../index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Python Challenge</a><ul>
+<li><a class="reference internal" href="#level-0">Level 0 </a></li>
+<li><a class="reference internal" href="#level-1">Level 1</a></li>
+<li><a class="reference internal" href="#level-2">Level 2</a></li>
+<li><a class="reference internal" href="#level-3">Level 3</a></li>
+<li><a class="reference internal" href="#level-4">Level 4</a></li>
+<li><a class="reference internal" href="#level-5">Level 5</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="usaco/beads.html"
+                        title="previous chapter">USACO 1.1 Broken Necklace</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="../book/index.html"
+                        title="next chapter">读书笔记</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="../_sources/coding/python_challenge.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+            </div>
+        </div>
+                </div>
+            
+        </div>
+    </div>
+    <div class="footer">
+        
+        <div class="container">
+                    &copy;
+                        Copyright 2013, klb3713.
+                Created using <a
+                        href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3
+                    .
+                Theme <a href="https://github.com/scotch/sphinx-bootstrap">Sphinx-Bootstrap</a>
+                adapted from
+                <a href="http://twitter.github.com/bootstrap/">Twitter's
+                    Bootstrap</a> by <a href="http://www.scotchmedia.com">Scotch
+                Media</a>
+        </div>
+    </div>
+
+
+    <!-- disqus -->
+    <script type="text/javascript">
+        var disqus_title = 'Python Challenge &mdash; klb3713&#39;s notebook';
+        var disqus_identifier ='code' + '.' + "klb3713" + window.location.pathname.replace('/', '.');
+    </script>
+
+    <script type="text/javascript">
+        /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+        var disqus_shortname = "klb3713"; // required: replace example with your forum shortname
+
+        /* * * DON'T EDIT BELOW THIS LINE * * */
+        (function() {
+            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+            dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+    </script>
+
+
+<script type="text/javascript">
+    $('.nav .active').on('click', function () {
+        e.preventDefault()
+        $(this).siblings().toggle()
+    });
+</script>
+
+<!-- plusone -->
+<script type="text/javascript">
+    (function () {
+        var po = document.createElement('script');
+        po.type = 'text/javascript';
+        po.async = true;
+        po.src = 'https://apis.google.com/js/plusone.js';
+        var s = document.getElementsByTagName('script')[0];
+        s.parentNode.insertBefore(po, s);
+    })();
+</script>
+
+<!-- twitter -->
+<script src="http://platform.twitter.com/widgets.js" type="text/javascript"></script>
+
+</body>
+</html>

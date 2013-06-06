@@ -21,12 +21,10 @@ USA Computing Olympiad
    
    usaco/beads
 
-
-
-笔试题
-======
+Programming Challenges
+=======================
 
 .. toctree::
    :maxdepth: 1
    
-   
+   python_challenge
