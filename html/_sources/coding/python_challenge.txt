@@ -185,7 +185,211 @@ Hint4： 网页源码中：<peakhell src="banner.p"/>， banner.p 可以下载�
 出现 **channel** 下一关地址是 http://www.pythonchallenge.com/pc/def/channel.html
 
 
+Level 6 [#]_
+=============
+.. image:: images/peakhell.jpg
+   :scale: 50 %
 
+Hint1：<!-- <-- zip --> 根据提示，应该和zip文件有关（Python有zipfile模块）。
+
+将channel.html 改为 channel.zip，发现可以下载。channel.zip解压后，channel文件夹中是一系列txt文件。其中一个文件名是"readme",其余是数字名。打开readme.txt::
+
+    welcome to my zipped list.
+    hint1: start from 90052
+    hint2: answer is inside the zip
+
+好吧，从90052.txt 开始处理。直到出现：Collect the comments. 哪里有comments？ 没办法，学习zipfile模块吧，果然有comment属性。
+上述过程再重复一遍（还是从90052.txt）开始，记录每次遇到的文件的comment(如：``z=zipfile.ZipFile('channel.zip'); z.getinfo('90052.txt').comment`` )
+
+打印记录的comments，形如"hockey"。
+
+.. code-block:: python
+
+    import zipfile, re
+    findnothing = re.compile(r"Next nothing is (\d+)").match
+    comments = []
+    z = zipfile.ZipFile("channel.zip", "r")
+    seed = "90052"
+    while True:
+        fname = seed + ".txt"
+        comments.append(z.getinfo(fname).comment)
+        guts = z.read(fname)
+        m = findnothing(guts)
+        if m:
+            seed = m.group(1)
+        else:
+            break
+    print "".join(comments)
+
+打开 http://www.pythonchallenge.com/pc/def/hockey.html::
+
+    it's in the air. look at the letters. 
+
+表示还没完，要从letters中找答案。组成"hockey"形状的单词分别是O、X、Y、G、E、N，即"oxygen"::
+
+    ****************************************************************
+    ****************************************************************
+    **                                                            **
+    **   OO    OO    XX      YYYY    GG    GG  EEEEEE NN      NN  **
+    **   OO    OO  XXXXXX   YYYYYY   GG   GG   EEEEEE  NN    NN   **
+    **   OO    OO XXX  XXX YYY   YY  GG GG     EE       NN  NN    **
+    **   OOOOOOOO XX    XX YY        GGG       EEEEE     NNNN     **
+    **   OOOOOOOO XX    XX YY        GGG       EEEEE      NN      **
+    **   OO    OO XXX  XXX YYY   YY  GG GG     EE         NN      **
+    **   OO    OO  XXXXXX   YYYYYY   GG   GG   EEEEEE     NN      **
+    **   OO    OO    XX      YYYY    GG    GG  EEEEEE     NN      **
+    **                                                            **
+    ****************************************************************
+     **************************************************************
+
+下一关地址是 http://www.pythonchallenge.com/pc/def/oxygen.html
+
+Level 7
+=======
+.. image:: images/oxygen.png
+   :scale: 50 %
+
+Hint1：图片中有一道灰度条。
+
+没有其他提示，必然要从图片下手了。用到PIL。该图像模式是RGBA。每个像素是个四元组，前3个分量分别代表红(R)、绿(G)、蓝(B)，对于灰度图像，R=B=G。这样，我们可以找到这段灰度条。使用 ``getpixel((width, height))`` 得到像素点的RGB值，将其数值按照ASCII码映射为字符（chr 函数）。
+
+.. code-block:: python
+
+    import Image
+
+    im = Image.open("../images/oxygen.png")
+    print "Image info:",im.format, im.size, im.mode
+
+    height = 0
+    for h in range(im.size[1]):
+        pixel = im.getpixel((0, h))
+        if(pixel[0]==pixel[1] and pixel[1]==pixel[2]):
+            height = h
+            break
+
+    ascii = [-1]
+    for w in range(0, im.size[0], 7):
+        pixel = im.getpixel((w, height))
+        if(pixel[0]==pixel[1] and pixel[1]==pixel[2]):
+            ascii.append(pixel[0])
+        else:
+            break
+
+    ascii.remove(-1)
+    print "".join([chr(asc) for asc in ascii])
+
+打印出来的信息是::
+
+    smart guy, you made it. the next level is [105, 110, 116, 101, 103, 114, 105, 116, 121]
+
+表示还没完，继续用chr转换后面的数值得到下一关的地址 **integrity** 即 http://www.pythonchallenge.com/pc/def/integrity.html
+
+Level 8
+=======
+.. image:: images/integrity.jpg
+   :scale: 50 %
+
+Hint1：Where is the missing link?
+
+发现图片是有链接的，点击后弹出登录框，需要用户名和密码，打开网页源代码，看到::
+
+    <!--
+    un: 'BZh91AY&SYA\xaf\x82\r\x00\x00\x01\x01\x80\x02\xc0\x02\x00\x00!\x9ah3M\x07<]\xc9\x14\xe1BA\x06\xbe\x084'
+    pw: 'BZh91AY&SY\x94$|\x0e\x00\x00\x00\x81\x00\x03$\x00!\x9ah3M\x13<]\xc9\x14\xe1BBP\x91\xf08'
+    -->
+
+其中un、pw 都是"BZh"开头，应该是bz2编码，于是用python的bz2库来解码，结果是::
+
+    In [40]: import bz2
+
+    In [41]: bz2.
+    bz2.BZ2Compressor    bz2.BZ2Decompressor  bz2.BZ2File          bz2.compress         bz2.decompress
+
+    In [41]: bz2.decompress('BZh91AY&SYA\xaf\x82\r\x00\x00\x01\x01\x80\x02\xc0\x02\x00 \x00!\x9ah3M\x07<]\xc9\x14\xe1BA\x06\xbe\x084')
+    Out[41]: 'huge'
+
+    In [42]: bz2.decompress('BZh91AY&SY\x94$|\x0e\x00\x00\x00\x81\x00\x03$ \x00!\x9ah3M\x13<]\xc9\x14\xe1BBP\x91\xf08')
+    Out[42]: 'file'
+
+这就是"../return/good.html"页面需要的用户名密码了。下一关地址 http://www.pythonchallenge.com/pc/return/good.html
+
+Level 9
+=======
+.. image:: images/good.jpg
+   :scale: 50 %
+
+打开源代码，看到提示： **first+second=?** 然后是两大块数字，根据图片中的黑点的意思，猜测是要通过描点画出一个轮廓图来，这两块数字矩阵估计是像素值。
+
+.. code-block:: python
+
+    import Image,ImageDraw
+    im = Image.new('RGB', (500,500))
+    draw = ImageDraw.Draw(im)
+    first=[146,399,163,403, ...]  # chunked
+    second=[156,141,165,135, ...] # chunked
+    draw.polygon(first,fill='white')
+    draw.polygon(second,fill='white')
+    im.save('09.jpg')
+
+这里用到了 `ImageDraw <http://infohost.nmt.edu/tcc/help/pubs/pil/image-draw.html>`_ 库，其中的 ``draw.polygon(first,fill='white')``
+用来画多边形的函数::
+
+    .polygon(L, fill=None, outline=None)
+        Works like the .line() method, but after drawing all the specified line segments, it draws one more that connects the last point back to the first. The interior displays the fill, transparent by default. The border is drawn in the outline color, defaulting to white.
+
+        For example, draw.polygon([(60,60), (90,60), (90,90), (60,90)], fill="red", outline="green") would draw a square box with a green outline, filled with red.
+
+画出来的图片是
+
+.. image:: images/09.jpg
+   :scale: 50 %
+
+……这是头公牛，试试英文单词bull，OK！下一关地址是 http://www.pythonchallenge.com/pc/return/bull.html
+
+Level 10
+========
+.. image:: images/bull.jpg
+   :scale: 50 %
+
+Hint1: len(a[30]) = ?
+
+打开源代码，看到有个 **"sequence.txt"** 链接，里面是一个数列::
+
+    a = [1, 11, 21, 1211, 111221, 
+
+google后知道这是一个 `Look-and-say sequence <http://en.wikipedia.org/wiki/Look-and-say_sequence>`_ 数列，就是说下一个数是前一个数读出来。
+代码生成这个数列，然后打印a[30]的长度。
+
+.. code-block:: python
+
+    def readNum(num_seq):
+        next_num = ""
+        index = 0
+        cur = num_seq[index]
+        index += 1
+        while index < len(num_seq):
+            while index < len(num_seq) and num_seq[index] == cur[0]:
+                cur += num_seq[index]
+                index += 1
+            else:
+                if index < len(num_seq):
+                    next_num += str(len(cur))+cur[0]
+                    cur = num_seq[index]
+                    index += 1
+        else:
+            next_num += str(len(cur))+cur[0]
+
+        return next_num
+
+    a = ['1']
+    for i in range(30):
+        a.append(readNum(a[i]))
+
+    print len(a[30])
+
+结果是5808，下一关地址是 http://www.pythonchallenge.com/pc/return/5808.html
 
 
 .. [#] `Python Challenge的解答 <http://www.syoon.me/python/index.html>`_
+.. [#] `Pythonchallenge （0～8关） <http://www.douban.com/note/237121347/>`_
+

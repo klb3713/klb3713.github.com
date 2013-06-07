@@ -139,7 +139,7 @@
   <div class="section" id="python-challenge">
 <h1>Python Challenge<a class="headerlink" href="#python-challenge" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="level-0">
-<h2>Level 0 <a class="footnote-reference" href="#id3" id="id1">[1]</a><a class="headerlink" href="#level-0" title="Permalink to this headline">¶</a></h2>
+<h2>Level 0 <a class="footnote-reference" href="#id4" id="id1">[1]</a><a class="headerlink" href="#level-0" title="Permalink to this headline">¶</a></h2>
 <a class="reference internal image-reference" href="../_images/calc.jpg"><img alt="../_images/calc.jpg" src="../_images/calc.jpg" style="width: 320.0px; height: 240.0px;" /></a>
 <p>Hint: try to change the URL address.</p>
 <p>第零关主要让人熟悉游戏规则和形式。首先观察标签栏主题显示的是warming up，表明这关的主题是热身。页面图片下标注一行小提示尝试改变url的地址。在没有别的提示下，明显是改成图片内的内容， 2^38。打开Python解释器，输入&#8221;2**38&#8221;，显示答案&#8221;274877906944L&#8221;。去掉L替换URL中的0得到下一关地址。</p>
@@ -277,10 +277,186 @@ but MAYBE they are in the page source.</p>
 </pre></div>
 </div>
 <p>出现 <strong>channel</strong> 下一关地址是 <a class="reference external" href="http://www.pythonchallenge.com/pc/def/channel.html">http://www.pythonchallenge.com/pc/def/channel.html</a></p>
-<table class="docutils footnote" frame="void" id="id3" rules="none">
+</div>
+<div class="section" id="level-6">
+<h2>Level 6 <a class="footnote-reference" href="#id6" id="id3">[2]</a><a class="headerlink" href="#level-6" title="Permalink to this headline">¶</a></h2>
+<a class="reference internal image-reference" href="../_images/peakhell.jpg"><img alt="../_images/peakhell.jpg" src="../_images/peakhell.jpg" style="width: 320.0px; height: 240.0px;" /></a>
+<p>Hint1：&lt;!&#8211; &lt;&#8211; zip &#8211;&gt; 根据提示，应该和zip文件有关（Python有zipfile模块）。</p>
+<p>将channel.html 改为 channel.zip，发现可以下载。channel.zip解压后，channel文件夹中是一系列txt文件。其中一个文件名是&#8221;readme&#8221;,其余是数字名。打开readme.txt:</p>
+<div class="highlight-python"><pre>welcome to my zipped list.
+hint1: start from 90052
+hint2: answer is inside the zip</pre>
+</div>
+<p>好吧，从90052.txt 开始处理。直到出现：Collect the comments. 哪里有comments？ 没办法，学习zipfile模块吧，果然有comment属性。
+上述过程再重复一遍（还是从90052.txt）开始，记录每次遇到的文件的comment(如：<tt class="docutils literal"><span class="pre">z=zipfile.ZipFile('channel.zip');</span> <span class="pre">z.getinfo('90052.txt').comment</span></tt> )</p>
+<p>打印记录的comments，形如&#8221;hockey&#8221;。</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">import</span> <span class="nn">zipfile</span><span class="o">,</span> <span class="nn">re</span>
+<span class="n">findnothing</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="s">r&quot;Next nothing is (\d+)&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">match</span>
+<span class="n">comments</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">z</span> <span class="o">=</span> <span class="n">zipfile</span><span class="o">.</span><span class="n">ZipFile</span><span class="p">(</span><span class="s">&quot;channel.zip&quot;</span><span class="p">,</span> <span class="s">&quot;r&quot;</span><span class="p">)</span>
+<span class="n">seed</span> <span class="o">=</span> <span class="s">&quot;90052&quot;</span>
+<span class="k">while</span> <span class="bp">True</span><span class="p">:</span>
+    <span class="n">fname</span> <span class="o">=</span> <span class="n">seed</span> <span class="o">+</span> <span class="s">&quot;.txt&quot;</span>
+    <span class="n">comments</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">z</span><span class="o">.</span><span class="n">getinfo</span><span class="p">(</span><span class="n">fname</span><span class="p">)</span><span class="o">.</span><span class="n">comment</span><span class="p">)</span>
+    <span class="n">guts</span> <span class="o">=</span> <span class="n">z</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="n">fname</span><span class="p">)</span>
+    <span class="n">m</span> <span class="o">=</span> <span class="n">findnothing</span><span class="p">(</span><span class="n">guts</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">m</span><span class="p">:</span>
+        <span class="n">seed</span> <span class="o">=</span> <span class="n">m</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">break</span>
+<span class="k">print</span> <span class="s">&quot;&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">comments</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>打开 <a class="reference external" href="http://www.pythonchallenge.com/pc/def/hockey.html">http://www.pythonchallenge.com/pc/def/hockey.html</a>:</p>
+<div class="highlight-python"><pre>it's in the air. look at the letters.</pre>
+</div>
+<p>表示还没完，要从letters中找答案。组成&#8221;hockey&#8221;形状的单词分别是O、X、Y、G、E、N，即&#8221;oxygen&#8221;:</p>
+<div class="highlight-python"><pre>****************************************************************
+****************************************************************
+**                                                            **
+**   OO    OO    XX      YYYY    GG    GG  EEEEEE NN      NN  **
+**   OO    OO  XXXXXX   YYYYYY   GG   GG   EEEEEE  NN    NN   **
+**   OO    OO XXX  XXX YYY   YY  GG GG     EE       NN  NN    **
+**   OOOOOOOO XX    XX YY        GGG       EEEEE     NNNN     **
+**   OOOOOOOO XX    XX YY        GGG       EEEEE      NN      **
+**   OO    OO XXX  XXX YYY   YY  GG GG     EE         NN      **
+**   OO    OO  XXXXXX   YYYYYY   GG   GG   EEEEEE     NN      **
+**   OO    OO    XX      YYYY    GG    GG  EEEEEE     NN      **
+**                                                            **
+****************************************************************
+ **************************************************************</pre>
+</div>
+<p>下一关地址是 <a class="reference external" href="http://www.pythonchallenge.com/pc/def/oxygen.html">http://www.pythonchallenge.com/pc/def/oxygen.html</a></p>
+</div>
+<div class="section" id="level-7">
+<h2>Level 7<a class="headerlink" href="#level-7" title="Permalink to this headline">¶</a></h2>
+<a class="reference internal image-reference" href="../_images/oxygen.png"><img alt="../_images/oxygen.png" src="../_images/oxygen.png" style="width: 314.5px; height: 47.5px;" /></a>
+<p>Hint1：图片中有一道灰度条。</p>
+<p>没有其他提示，必然要从图片下手了。用到PIL。该图像模式是RGBA。每个像素是个四元组，前3个分量分别代表红(R)、绿(G)、蓝(B)，对于灰度图像，R=B=G。这样，我们可以找到这段灰度条。使用 <tt class="docutils literal"><span class="pre">getpixel((width,</span> <span class="pre">height))</span></tt> 得到像素点的RGB值，将其数值按照ASCII码映射为字符（chr 函数）。</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">import</span> <span class="nn">Image</span>
+
+<span class="n">im</span> <span class="o">=</span> <span class="n">Image</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="s">&quot;../images/oxygen.png&quot;</span><span class="p">)</span>
+<span class="k">print</span> <span class="s">&quot;Image info:&quot;</span><span class="p">,</span><span class="n">im</span><span class="o">.</span><span class="n">format</span><span class="p">,</span> <span class="n">im</span><span class="o">.</span><span class="n">size</span><span class="p">,</span> <span class="n">im</span><span class="o">.</span><span class="n">mode</span>
+
+<span class="n">height</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="k">for</span> <span class="n">h</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">im</span><span class="o">.</span><span class="n">size</span><span class="p">[</span><span class="mi">1</span><span class="p">]):</span>
+    <span class="n">pixel</span> <span class="o">=</span> <span class="n">im</span><span class="o">.</span><span class="n">getpixel</span><span class="p">((</span><span class="mi">0</span><span class="p">,</span> <span class="n">h</span><span class="p">))</span>
+    <span class="k">if</span><span class="p">(</span><span class="n">pixel</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">==</span><span class="n">pixel</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="ow">and</span> <span class="n">pixel</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">==</span><span class="n">pixel</span><span class="p">[</span><span class="mi">2</span><span class="p">]):</span>
+        <span class="n">height</span> <span class="o">=</span> <span class="n">h</span>
+        <span class="k">break</span>
+
+<span class="n">ascii</span> <span class="o">=</span> <span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+<span class="k">for</span> <span class="n">w</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">im</span><span class="o">.</span><span class="n">size</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="mi">7</span><span class="p">):</span>
+    <span class="n">pixel</span> <span class="o">=</span> <span class="n">im</span><span class="o">.</span><span class="n">getpixel</span><span class="p">((</span><span class="n">w</span><span class="p">,</span> <span class="n">height</span><span class="p">))</span>
+    <span class="k">if</span><span class="p">(</span><span class="n">pixel</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">==</span><span class="n">pixel</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="ow">and</span> <span class="n">pixel</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">==</span><span class="n">pixel</span><span class="p">[</span><span class="mi">2</span><span class="p">]):</span>
+        <span class="n">ascii</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">pixel</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">break</span>
+
+<span class="n">ascii</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+<span class="k">print</span> <span class="s">&quot;&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="nb">chr</span><span class="p">(</span><span class="n">asc</span><span class="p">)</span> <span class="k">for</span> <span class="n">asc</span> <span class="ow">in</span> <span class="n">ascii</span><span class="p">])</span>
+</pre></div>
+</div>
+<p>打印出来的信息是:</p>
+<div class="highlight-python"><pre>smart guy, you made it. the next level is [105, 110, 116, 101, 103, 114, 105, 116, 121]</pre>
+</div>
+<p>表示还没完，继续用chr转换后面的数值得到下一关的地址 <strong>integrity</strong> 即 <a class="reference external" href="http://www.pythonchallenge.com/pc/def/integrity.html">http://www.pythonchallenge.com/pc/def/integrity.html</a></p>
+</div>
+<div class="section" id="level-8">
+<h2>Level 8<a class="headerlink" href="#level-8" title="Permalink to this headline">¶</a></h2>
+<a class="reference internal image-reference" href="../_images/integrity.jpg"><img alt="../_images/integrity.jpg" src="../_images/integrity.jpg" style="width: 320.0px; height: 240.0px;" /></a>
+<p>Hint1：Where is the missing link?</p>
+<p>发现图片是有链接的，点击后弹出登录框，需要用户名和密码，打开网页源代码，看到:</p>
+<div class="highlight-python"><pre>&lt;!--
+un: 'BZh91AY&amp;SYA\xaf\x82\r\x00\x00\x01\x01\x80\x02\xc0\x02\x00\x00!\x9ah3M\x07&lt;]\xc9\x14\xe1BA\x06\xbe\x084'
+pw: 'BZh91AY&amp;SY\x94$|\x0e\x00\x00\x00\x81\x00\x03$\x00!\x9ah3M\x13&lt;]\xc9\x14\xe1BBP\x91\xf08'
+--&gt;</pre>
+</div>
+<p>其中un、pw 都是&#8221;BZh&#8221;开头，应该是bz2编码，于是用python的bz2库来解码，结果是:</p>
+<div class="highlight-python"><pre>In [40]: import bz2
+
+In [41]: bz2.
+bz2.BZ2Compressor    bz2.BZ2Decompressor  bz2.BZ2File          bz2.compress         bz2.decompress
+
+In [41]: bz2.decompress('BZh91AY&amp;SYA\xaf\x82\r\x00\x00\x01\x01\x80\x02\xc0\x02\x00 \x00!\x9ah3M\x07&lt;]\xc9\x14\xe1BA\x06\xbe\x084')
+Out[41]: 'huge'
+
+In [42]: bz2.decompress('BZh91AY&amp;SY\x94$|\x0e\x00\x00\x00\x81\x00\x03$ \x00!\x9ah3M\x13&lt;]\xc9\x14\xe1BBP\x91\xf08')
+Out[42]: 'file'</pre>
+</div>
+<p>这就是&#8221;../return/good.html&#8221;页面需要的用户名密码了。下一关地址 <a class="reference external" href="http://www.pythonchallenge.com/pc/return/good.html">http://www.pythonchallenge.com/pc/return/good.html</a></p>
+</div>
+<div class="section" id="level-9">
+<h2>Level 9<a class="headerlink" href="#level-9" title="Permalink to this headline">¶</a></h2>
+<a class="reference internal image-reference" href="../_images/good.jpg"><img alt="../_images/good.jpg" src="../_images/good.jpg" style="width: 320.0px; height: 243.5px;" /></a>
+<p>打开源代码，看到提示： <strong>first+second=?</strong> 然后是两大块数字，根据图片中的黑点的意思，猜测是要通过描点画出一个轮廓图来，这两块数字矩阵估计是像素值。</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">import</span> <span class="nn">Image</span><span class="o">,</span><span class="nn">ImageDraw</span>
+<span class="n">im</span> <span class="o">=</span> <span class="n">Image</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="s">&#39;RGB&#39;</span><span class="p">,</span> <span class="p">(</span><span class="mi">500</span><span class="p">,</span><span class="mi">500</span><span class="p">))</span>
+<span class="n">draw</span> <span class="o">=</span> <span class="n">ImageDraw</span><span class="o">.</span><span class="n">Draw</span><span class="p">(</span><span class="n">im</span><span class="p">)</span>
+<span class="n">first</span><span class="o">=</span><span class="p">[</span><span class="mi">146</span><span class="p">,</span><span class="mi">399</span><span class="p">,</span><span class="mi">163</span><span class="p">,</span><span class="mi">403</span><span class="p">,</span> <span class="o">...</span><span class="p">]</span>  <span class="c"># chunked</span>
+<span class="n">second</span><span class="o">=</span><span class="p">[</span><span class="mi">156</span><span class="p">,</span><span class="mi">141</span><span class="p">,</span><span class="mi">165</span><span class="p">,</span><span class="mi">135</span><span class="p">,</span> <span class="o">...</span><span class="p">]</span> <span class="c"># chunked</span>
+<span class="n">draw</span><span class="o">.</span><span class="n">polygon</span><span class="p">(</span><span class="n">first</span><span class="p">,</span><span class="n">fill</span><span class="o">=</span><span class="s">&#39;white&#39;</span><span class="p">)</span>
+<span class="n">draw</span><span class="o">.</span><span class="n">polygon</span><span class="p">(</span><span class="n">second</span><span class="p">,</span><span class="n">fill</span><span class="o">=</span><span class="s">&#39;white&#39;</span><span class="p">)</span>
+<span class="n">im</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="s">&#39;09.jpg&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>这里用到了 <a class="reference external" href="http://infohost.nmt.edu/tcc/help/pubs/pil/image-draw.html">ImageDraw</a> 库，其中的 <tt class="docutils literal"><span class="pre">draw.polygon(first,fill='white')</span></tt>
+用来画多边形的函数:</p>
+<div class="highlight-python"><pre>.polygon(L, fill=None, outline=None)
+    Works like the .line() method, but after drawing all the specified line segments, it draws one more that connects the last point back to the first. The interior displays the fill, transparent by default. The border is drawn in the outline color, defaulting to white.
+
+    For example, draw.polygon([(60,60), (90,60), (90,90), (60,90)], fill="red", outline="green") would draw a square box with a green outline, filled with red.</pre>
+</div>
+<p>画出来的图片是</p>
+<a class="reference internal image-reference" href="../_images/09.jpg"><img alt="../_images/09.jpg" src="../_images/09.jpg" style="width: 250.0px; height: 250.0px;" /></a>
+<p>……这是头公牛，试试英文单词bull，OK！下一关地址是 <a class="reference external" href="http://www.pythonchallenge.com/pc/return/bull.html">http://www.pythonchallenge.com/pc/return/bull.html</a></p>
+</div>
+<div class="section" id="level-10">
+<h2>Level 10<a class="headerlink" href="#level-10" title="Permalink to this headline">¶</a></h2>
+<a class="reference internal image-reference" href="../_images/bull.jpg"><img alt="../_images/bull.jpg" src="../_images/bull.jpg" style="width: 320.0px; height: 240.0px;" /></a>
+<p>Hint1: len(a[30]) = ?</p>
+<p>打开源代码，看到有个 <strong>&#8220;sequence.txt&#8221;</strong> 链接，里面是一个数列:</p>
+<div class="highlight-python"><pre>a = [1, 11, 21, 1211, 111221,</pre>
+</div>
+<p>google后知道这是一个 <a class="reference external" href="http://en.wikipedia.org/wiki/Look-and-say_sequence">Look-and-say sequence</a> 数列，就是说下一个数是前一个数读出来。
+代码生成这个数列，然后打印a[30]的长度。</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="k">def</span> <span class="nf">readNum</span><span class="p">(</span><span class="n">num_seq</span><span class="p">):</span>
+    <span class="n">next_num</span> <span class="o">=</span> <span class="s">&quot;&quot;</span>
+    <span class="n">index</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">cur</span> <span class="o">=</span> <span class="n">num_seq</span><span class="p">[</span><span class="n">index</span><span class="p">]</span>
+    <span class="n">index</span> <span class="o">+=</span> <span class="mi">1</span>
+    <span class="k">while</span> <span class="n">index</span> <span class="o">&lt;</span> <span class="nb">len</span><span class="p">(</span><span class="n">num_seq</span><span class="p">):</span>
+        <span class="k">while</span> <span class="n">index</span> <span class="o">&lt;</span> <span class="nb">len</span><span class="p">(</span><span class="n">num_seq</span><span class="p">)</span> <span class="ow">and</span> <span class="n">num_seq</span><span class="p">[</span><span class="n">index</span><span class="p">]</span> <span class="o">==</span> <span class="n">cur</span><span class="p">[</span><span class="mi">0</span><span class="p">]:</span>
+            <span class="n">cur</span> <span class="o">+=</span> <span class="n">num_seq</span><span class="p">[</span><span class="n">index</span><span class="p">]</span>
+            <span class="n">index</span> <span class="o">+=</span> <span class="mi">1</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">index</span> <span class="o">&lt;</span> <span class="nb">len</span><span class="p">(</span><span class="n">num_seq</span><span class="p">):</span>
+                <span class="n">next_num</span> <span class="o">+=</span> <span class="nb">str</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">cur</span><span class="p">))</span><span class="o">+</span><span class="n">cur</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+                <span class="n">cur</span> <span class="o">=</span> <span class="n">num_seq</span><span class="p">[</span><span class="n">index</span><span class="p">]</span>
+                <span class="n">index</span> <span class="o">+=</span> <span class="mi">1</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">next_num</span> <span class="o">+=</span> <span class="nb">str</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">cur</span><span class="p">))</span><span class="o">+</span><span class="n">cur</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+
+    <span class="k">return</span> <span class="n">next_num</span>
+
+<span class="n">a</span> <span class="o">=</span> <span class="p">[</span><span class="s">&#39;1&#39;</span><span class="p">]</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">30</span><span class="p">):</span>
+    <span class="n">a</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">readNum</span><span class="p">(</span><span class="n">a</span><span class="p">[</span><span class="n">i</span><span class="p">]))</span>
+
+<span class="k">print</span> <span class="nb">len</span><span class="p">(</span><span class="n">a</span><span class="p">[</span><span class="mi">30</span><span class="p">])</span>
+</pre></div>
+</div>
+<p>结果是5808，下一关地址是 <a class="reference external" href="http://www.pythonchallenge.com/pc/return/5808.html">http://www.pythonchallenge.com/pc/return/5808.html</a></p>
+<table class="docutils footnote" frame="void" id="id4" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
 <tr><td class="label"><a class="fn-backref" href="#id1">[1]</a></td><td><a class="reference external" href="http://www.syoon.me/python/index.html">Python Challenge的解答</a></td></tr>
+</tbody>
+</table>
+<table class="docutils footnote" frame="void" id="id6" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id3">[2]</a></td><td><a class="reference external" href="http://www.douban.com/note/237121347/">Pythonchallenge （0～8关）</a></td></tr>
 </tbody>
 </table>
 </div>
@@ -305,6 +481,11 @@ but MAYBE they are in the page source.</p>
 <li><a class="reference internal" href="#level-3">Level 3</a></li>
 <li><a class="reference internal" href="#level-4">Level 4</a></li>
 <li><a class="reference internal" href="#level-5">Level 5</a></li>
+<li><a class="reference internal" href="#level-6">Level 6 </a></li>
+<li><a class="reference internal" href="#level-7">Level 7</a></li>
+<li><a class="reference internal" href="#level-8">Level 8</a></li>
+<li><a class="reference internal" href="#level-9">Level 9</a></li>
+<li><a class="reference internal" href="#level-10">Level 10</a></li>
 </ul>
 </li>
 </ul>
