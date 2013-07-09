@@ -99,7 +99,10 @@
         <a href="https://github.com/klb3713/notebook/">GitHub</a>
     </li>
     <li>
-        <a href="https://github.com/klb3713/notebook/issues?state=open">Issues</a>
+        <a href="https://weibo.com/klb3713">Weibo</a>
+    </li>
+    <li>
+        <a href="http://www.douban.com/people/klb-3713/">Douban</a>
     </li>
     <li class="divider">&middot;</li>
     <li>
@@ -116,18 +119,6 @@
     </li>
 
     <li class="divider">&middot;</li>
-    <li class="follow-btn">
-        <a href="https://twitter.com/klb3713"
-           class="twitter-follow-button" data-width="145px"
-           data-link-color="#0069D6" data-show-count="false">Follow
-            @klb3713</a>
-    </li>
-    <li class="tweet-btn">
-        <a href="https://twitter.com/share" class="twitter-share-button"
-           data-url="www.klb3713.com" data-count="horizontal"
-           data-via="twbootstrap"
-           data-related="klb3713:Creator of notebook">Tweet</a>
-    </li>
     <li class="plusone-container">
         <g:plusone size="medium"></g:plusone>
     </li>
@@ -139,7 +130,7 @@
   <div class="section" id="python-challenge">
 <h1>Python Challenge<a class="headerlink" href="#python-challenge" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="level-0">
-<h2>Level 0 <a class="footnote-reference" href="#id4" id="id1">[1]</a><a class="headerlink" href="#level-0" title="Permalink to this headline">¶</a></h2>
+<h2>Level 0 <a class="footnote-reference" href="#id5" id="id1">[1]</a><a class="headerlink" href="#level-0" title="Permalink to this headline">¶</a></h2>
 <a class="reference internal image-reference" href="../_images/calc.jpg"><img alt="../_images/calc.jpg" src="../_images/calc.jpg" style="width: 320.0px; height: 240.0px;" /></a>
 <p>Hint: try to change the URL address.</p>
 <p>第零关主要让人熟悉游戏规则和形式。首先观察标签栏主题显示的是warming up，表明这关的主题是热身。页面图片下标注一行小提示尝试改变url的地址。在没有别的提示下，明显是改成图片内的内容， 2^38。打开Python解释器，输入&#8221;2**38&#8221;，显示答案&#8221;274877906944L&#8221;。去掉L替换URL中的0得到下一关地址。</p>
@@ -279,7 +270,7 @@ but MAYBE they are in the page source.</p>
 <p>出现 <strong>channel</strong> 下一关地址是 <a class="reference external" href="http://www.pythonchallenge.com/pc/def/channel.html">http://www.pythonchallenge.com/pc/def/channel.html</a></p>
 </div>
 <div class="section" id="level-6">
-<h2>Level 6 <a class="footnote-reference" href="#id6" id="id3">[2]</a><a class="headerlink" href="#level-6" title="Permalink to this headline">¶</a></h2>
+<h2>Level 6 <a class="footnote-reference" href="#id7" id="id3">[2]</a><a class="headerlink" href="#level-6" title="Permalink to this headline">¶</a></h2>
 <a class="reference internal image-reference" href="../_images/peakhell.jpg"><img alt="../_images/peakhell.jpg" src="../_images/peakhell.jpg" style="width: 320.0px; height: 240.0px;" /></a>
 <p>Hint1：&lt;!&#8211; &lt;&#8211; zip &#8211;&gt; 根据提示，应该和zip文件有关（Python有zipfile模块）。</p>
 <p>将channel.html 改为 channel.zip，发现可以下载。channel.zip解压后，channel文件夹中是一系列txt文件。其中一个文件名是&#8221;readme&#8221;,其余是数字名。打开readme.txt:</p>
@@ -447,16 +438,86 @@ Out[42]: 'file'</pre>
 </pre></div>
 </div>
 <p>结果是5808，下一关地址是 <a class="reference external" href="http://www.pythonchallenge.com/pc/return/5808.html">http://www.pythonchallenge.com/pc/return/5808.html</a></p>
-<table class="docutils footnote" frame="void" id="id4" rules="none">
+</div>
+<div class="section" id="level-11">
+<h2>Level 11<a class="headerlink" href="#level-11" title="Permalink to this headline">¶</a></h2>
+<a class="reference internal image-reference" href="../_images/cave.jpg"><img alt="../_images/cave.jpg" src="../_images/cave.jpg" style="width: 320.0px; height: 240.0px;" /></a>
+<p>打开源代码，没有任何提示，观察图片，明显是两张图片重叠在一起的，根据网页标题odd even,
+猜测可以按奇偶把图片分解为两张图片。代码如下:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">import</span> <span class="nn">Image</span>
+<span class="n">src</span> <span class="o">=</span> <span class="n">Image</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="s">&quot;cave.jpg&quot;</span><span class="p">)</span>
+<span class="n">w</span><span class="p">,</span><span class="n">h</span> <span class="o">=</span> <span class="n">src</span><span class="o">.</span><span class="n">size</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">src</span><span class="o">.</span><span class="n">size</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+<span class="k">print</span> <span class="s">&quot;Image info:&quot;</span><span class="p">,</span><span class="n">src</span><span class="o">.</span><span class="n">format</span><span class="p">,</span> <span class="n">src</span><span class="o">.</span><span class="n">size</span><span class="p">,</span> <span class="n">src</span><span class="o">.</span><span class="n">mode</span>
+<span class="n">new</span> <span class="o">=</span> <span class="n">Image</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="n">src</span><span class="o">.</span><span class="n">mode</span><span class="p">,(</span><span class="n">w</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> <span class="n">h</span><span class="p">))</span>
+
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">w</span><span class="o">*</span><span class="n">h</span><span class="p">):</span>
+    <span class="n">y</span><span class="p">,</span> <span class="n">x</span> <span class="o">=</span> <span class="nb">divmod</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">w</span><span class="p">)</span>
+    <span class="n">p</span> <span class="o">=</span> <span class="n">src</span><span class="o">.</span><span class="n">getpixel</span><span class="p">((</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">))</span>
+    <span class="k">if</span> <span class="n">i</span><span class="o">%</span><span class="mi">2</span><span class="p">:</span>
+        <span class="n">new</span><span class="o">.</span><span class="n">putpixel</span><span class="p">((</span><span class="n">x</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span><span class="n">y</span><span class="o">/</span><span class="mi">2</span><span class="o">+</span><span class="n">h</span><span class="o">/</span><span class="mi">2</span><span class="p">),</span><span class="n">p</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">new</span><span class="o">.</span><span class="n">putpixel</span><span class="p">((</span><span class="n">x</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span><span class="n">y</span><span class="o">/</span><span class="mi">2</span><span class="p">),</span><span class="n">p</span><span class="p">)</span>
+<span class="n">new</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="s">&#39;11.jpg&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<a class="reference internal image-reference" href="../_images/11.jpg"><img alt="../_images/11.jpg" src="../_images/11.jpg" style="width: 160.0px; height: 240.0px;" /></a>
+<p>可以看到 <strong>evil</strong> ，下一关地址是 <a class="reference external" href="http://www.pythonchallenge.com/pc/return/evil.html">http://www.pythonchallenge.com/pc/return/evil.html</a></p>
+</div>
+<div class="section" id="level-12">
+<h2>Level 12 <a class="footnote-reference" href="#id8" id="id4">[3]</a><a class="headerlink" href="#level-12" title="Permalink to this headline">¶</a></h2>
+<a class="reference internal image-reference" href="../_images/evil1.jpg"><img alt="../_images/evil1.jpg" src="../_images/evil1.jpg" style="width: 320.0px; height: 240.0px;" /></a>
+<p>第一眼看到这道题的时候，还以为又是图片处理，但是又没有发现这张图到底有哪里需要处理的，
+于是就放弃了这个想法，然后看了看title和页面源代码。源代码是相当的干净简洁，什么注释都没有，
+唯一有的提示就只剩下title了——dealing evil。在整个源代码中能够找到于evil有关的就只有img标签的src了。
+仔细观察会发现src是 <strong>evil1.jpg</strong> ，既然有1，那么是否会有2、3、4甚至更多的图呢？
+于是接下来就是更改url来查看图片。将url改成evil2.jpg会看到提示：不是jpg，是gfx。
+那么就将后缀名改为gfx，这样就可以得到一个不知道是干吗的二进制文件。继续更改url看看能不能得到更多的信息，
+在evil3.jpg上会看到“no more evils...”。也就是说没有evil可以处理了。</p>
+<p>对于这个不知所谓的二进制文件完全不知道怎么下手，思考了很长时间也不得要领，出于无奈只好百度答案了，
+后来发现原来在evil3后面还有4，不过4只有在ie中才能看到（我尝试过在chrom、firefox、opera中查看，都看不到）。
+但是我觉得没有什么有价值的信息，果然还是到3就可以结束了（可能是因为我对外国文化不是很了解，
+有一个外国人的blog说以后会用到这个信息）。到目前为止所有信息到被找到了，可是唯独有一样信息没有被用上，
+那就是第一张图，在这张图上是一个人在分牌，牌被分为了5份，这是在暗示我们，
+将得到的gfx文件也按照发牌的方式分成五分，于是就可以得到下面的代码:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="c">#! /usr/bin/env python</span>
+<span class="sd">&#39;&#39;&#39;python challenge level 12</span>
+<span class="sd">question url: http://www.pythonchallenge.com/pc/return/evil.html</span>
+<span class="sd">answer url: http://www.pythonchallenge.com/pcc/return/.html</span>
+<span class="sd">&#39;&#39;&#39;</span>
+
+<span class="n">f</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s">&#39;evil2.gfx&#39;</span><span class="p">,</span><span class="s">&#39;rb&#39;</span><span class="p">)</span>
+<span class="n">content</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+<span class="n">f</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">xrange</span><span class="p">(</span><span class="mi">5</span><span class="p">):</span>
+    <span class="n">f</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s">&#39;level12_</span><span class="si">%d</span><span class="s">.jpg&#39;</span> <span class="o">%</span> <span class="n">i</span><span class="p">,</span> <span class="s">&#39;wb&#39;</span><span class="p">)</span>
+    <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">content</span><span class="p">[</span><span class="n">i</span><span class="p">::</span><span class="mi">5</span><span class="p">])</span>
+    <span class="n">f</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>这样就得到了0-4,一共5张图，可以直接从文件夹中看出图片的内容：</p>
+<img alt="../_images/level12.gif" src="../_images/level12.gif" />
+<p>最后一张图由于字母被划去了，所以忽略，最后就得到结果disproportional。因此，下一题的链接为：</p>
+<p><a class="reference external" href="http://www.pythonchallenge.com/pc/return/disproportional.html">http://www.pythonchallenge.com/pc/return/disproportional.html</a>。</p>
+<p>在做题的时候，会得到各种各样的信息，有些信息是有用的有些信息是没用的，有些信息是需要自己分析出来的，但是这些信息是比较杂乱的，不便于记忆，有时会忽略掉一些信息。因此要在身边准备一个本子和一支笔，要把自己得到的信息记录下来，俗话说好记性不如烂笔头。当前进受到阻碍的时候就看一看这些记录，再将思路整理一下，也许会有意想不到的收获。也正如《程序员的思维修炼》中所说，不是每个人都能成为伟大的人，但是每个人都会有伟大的想法。身边随时要携带纸笔或者其他可以替代的东西，灵感稍纵即逝，这样才能记录下你的每一个灵感。另外，不要过于关注细节，不要太过追求完美，美国作家安妮·拉莫特在她的《Bird by Bird: Some Instructions on Writing and Life》一书中解释了完美主义的危害:</p>
+<div class="highlight-python"><pre>完美主义是压迫者的声音，是人们的敌人。它会束缚你的想法，毁掉你的生命，同时它也会妨碍你创建较差的草稿初案。我认为完美主义基于一种强迫性的想法：如果你足够细致，没见事情都做得很好，那你就不会失败。但事实是，无论怎么做你都有可能失败，可是很多人即使不太仔细也会做的比你好，而且其间也会拥有更多的快乐。</pre>
+</div>
+<table class="docutils footnote" frame="void" id="id5" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
 <tr><td class="label"><a class="fn-backref" href="#id1">[1]</a></td><td><a class="reference external" href="http://www.syoon.me/python/index.html">Python Challenge的解答</a></td></tr>
 </tbody>
 </table>
-<table class="docutils footnote" frame="void" id="id6" rules="none">
+<table class="docutils footnote" frame="void" id="id7" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
 <tr><td class="label"><a class="fn-backref" href="#id3">[2]</a></td><td><a class="reference external" href="http://www.douban.com/note/237121347/">Pythonchallenge （0～8关）</a></td></tr>
+</tbody>
+</table>
+<table class="docutils footnote" frame="void" id="id8" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id4">[3]</a></td><td><a class="reference external" href="http://blog.csdn.net/kosl90/article/details/7270605">我大学剩下一年半的生活（十三）——pythonchallenge之level12</a></td></tr>
 </tbody>
 </table>
 </div>
@@ -486,6 +547,8 @@ Out[42]: 'file'</pre>
 <li><a class="reference internal" href="#level-8">Level 8</a></li>
 <li><a class="reference internal" href="#level-9">Level 9</a></li>
 <li><a class="reference internal" href="#level-10">Level 10</a></li>
+<li><a class="reference internal" href="#level-11">Level 11</a></li>
+<li><a class="reference internal" href="#level-12">Level 12 </a></li>
 </ul>
 </li>
 </ul>

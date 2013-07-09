@@ -389,7 +389,88 @@ google后知道这是一个 `Look-and-say sequence <http://en.wikipedia.org/wiki
 
 结果是5808，下一关地址是 http://www.pythonchallenge.com/pc/return/5808.html
 
+Level 11
+========
+.. image:: images/cave.jpg
+   :scale: 50 %
+
+打开源代码，没有任何提示，观察图片，明显是两张图片重叠在一起的，根据网页标题odd even,
+猜测可以按奇偶把图片分解为两张图片。代码如下:
+
+.. code-block:: python
+
+    import Image
+    src = Image.open("cave.jpg")
+    w,h = src.size[0], src.size[1]
+    print "Image info:",src.format, src.size, src.mode
+    new = Image.new(src.mode,(w/2, h))
+
+    for i in range(w*h):
+        y, x = divmod(i, w)
+        p = src.getpixel((x,y))
+        if i%2:
+            new.putpixel((x/2,y/2+h/2),p)
+        else:
+            new.putpixel((x/2,y/2),p)
+    new.save('11.jpg')
+
+.. image:: images/11.jpg
+   :scale: 50 %
+
+可以看到 **evil** ，下一关地址是 http://www.pythonchallenge.com/pc/return/evil.html
+
+Level 12 [#]_
+==============
+.. image:: images/evil1.jpg
+   :scale: 50 %
+
+第一眼看到这道题的时候，还以为又是图片处理，但是又没有发现这张图到底有哪里需要处理的，
+于是就放弃了这个想法，然后看了看title和页面源代码。源代码是相当的干净简洁，什么注释都没有，
+唯一有的提示就只剩下title了——dealing evil。在整个源代码中能够找到于evil有关的就只有img标签的src了。
+仔细观察会发现src是 **evil1.jpg** ，既然有1，那么是否会有2、3、4甚至更多的图呢？
+于是接下来就是更改url来查看图片。将url改成evil2.jpg会看到提示：不是jpg，是gfx。
+那么就将后缀名改为gfx，这样就可以得到一个不知道是干吗的二进制文件。继续更改url看看能不能得到更多的信息，
+在evil3.jpg上会看到“no more evils...”。也就是说没有evil可以处理了。
+
+对于这个不知所谓的二进制文件完全不知道怎么下手，思考了很长时间也不得要领，出于无奈只好百度答案了，
+后来发现原来在evil3后面还有4，不过4只有在ie中才能看到（我尝试过在chrom、firefox、opera中查看，都看不到）。
+但是我觉得没有什么有价值的信息，果然还是到3就可以结束了（可能是因为我对外国文化不是很了解，
+有一个外国人的blog说以后会用到这个信息）。到目前为止所有信息到被找到了，可是唯独有一样信息没有被用上，
+那就是第一张图，在这张图上是一个人在分牌，牌被分为了5份，这是在暗示我们，
+将得到的gfx文件也按照发牌的方式分成五分，于是就可以得到下面的代码:
+
+.. code-block:: python
+
+    #! /usr/bin/env python
+    '''python challenge level 12
+    question url: http://www.pythonchallenge.com/pc/return/evil.html
+    answer url: http://www.pythonchallenge.com/pcc/return/.html
+    '''
+
+    f = open('evil2.gfx','rb')
+    content = f.read()
+    f.close()
+
+    for i in xrange(5):
+        f = open('level12_%d.jpg' % i, 'wb')
+        f.write(content[i::5])
+        f.close()
+
+这样就得到了0-4,一共5张图，可以直接从文件夹中看出图片的内容：
+
+.. image:: images/level12.gif
+
+最后一张图由于字母被划去了，所以忽略，最后就得到结果disproportional。因此，下一题的链接为：
+
+http://www.pythonchallenge.com/pc/return/disproportional.html。
+
+在做题的时候，会得到各种各样的信息，有些信息是有用的有些信息是没用的，有些信息是需要自己分析出来的，但是这些信息是比较杂乱的，不便于记忆，有时会忽略掉一些信息。因此要在身边准备一个本子和一支笔，要把自己得到的信息记录下来，俗话说好记性不如烂笔头。当前进受到阻碍的时候就看一看这些记录，再将思路整理一下，也许会有意想不到的收获。也正如《程序员的思维修炼》中所说，不是每个人都能成为伟大的人，但是每个人都会有伟大的想法。身边随时要携带纸笔或者其他可以替代的东西，灵感稍纵即逝，这样才能记录下你的每一个灵感。另外，不要过于关注细节，不要太过追求完美，美国作家安妮·拉莫特在她的《Bird by Bird: Some Instructions on Writing and Life》一书中解释了完美主义的危害::
+
+    完美主义是压迫者的声音，是人们的敌人。它会束缚你的想法，毁掉你的生命，同时它也会妨碍你创建较差的草稿初案。我认为完美主义基于一种强迫性的想法：如果你足够细致，没见事情都做得很好，那你就不会失败。但事实是，无论怎么做你都有可能失败，可是很多人即使不太仔细也会做的比你好，而且其间也会拥有更多的快乐。
+
+
 
 .. [#] `Python Challenge的解答 <http://www.syoon.me/python/index.html>`_
 .. [#] `Pythonchallenge （0～8关） <http://www.douban.com/note/237121347/>`_
+.. [#] `我大学剩下一年半的生活（十三）——pythonchallenge之level12 <http://blog.csdn.net/kosl90/article/details/7270605>`_
 
