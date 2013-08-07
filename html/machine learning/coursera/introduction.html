@@ -248,8 +248,20 @@ google这条代码有post说这是ICA，我就迷茫了。。。看不出来怎�
 
 
                     
-                        <div id="disqus_thread"></div>
-                        <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+                        <!-- Duoshuo Comment BEGIN -->
+	                    <div class="ds-thread"></div>
+                        <script type="text/javascript">
+                        var duoshuoQuery = {short_name:"klbnote"};
+	                    (function() {
+		                    var ds = document.createElement('script');
+		                    ds.type = 'text/javascript';ds.async = true;
+		                    ds.src = 'http://static.duoshuo.com/embed.js';
+		                    ds.charset = 'UTF-8';
+		                    (document.getElementsByTagName('head')[0] 
+		                    || document.getElementsByTagName('body')[0]).appendChild(ds);
+	                    })();
+	                    </script>
+                        <!-- Duoshuo Comment END -->
                     
                 </div>
                 <div class="span3">
@@ -302,25 +314,6 @@ google这条代码有post说这是ICA，我就迷茫了。。。看不出来怎�
     </div>
 
 
-    <!-- disqus -->
-    <script type="text/javascript">
-        var disqus_title = '引言 &mdash; klb3713&#39;s notebook';
-        var disqus_identifier ='code' + '.' + "klb3713" + window.location.pathname.replace('/', '.');
-    </script>
-
-    <script type="text/javascript">
-        /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
-        var disqus_shortname = "klb3713"; // required: replace example with your forum shortname
-
-        /* * * DON'T EDIT BELOW THIS LINE * * */
-        (function() {
-            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-            dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
-            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-        })();
-    </script>
-
-
 <script type="text/javascript">
     $('.nav .active').on('click', function () {
         e.preventDefault()
@@ -339,9 +332,6 @@ google这条代码有post说这是ICA，我就迷茫了。。。看不出来怎�
         s.parentNode.insertBefore(po, s);
     })();
 </script>
-
-<!-- twitter -->
-<script src="http://platform.twitter.com/widgets.js" type="text/javascript"></script>
 
 </body>
 </html>
