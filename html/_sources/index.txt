@@ -3,8 +3,10 @@
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
+
 最新文章
 ========
+
 .. toctree::
    :maxdepth: 1
 
@@ -12,7 +14,7 @@
    coding/usaco/beads.rst
 
 
-CST笔记
+所有文章
 ========
 
 .. toctree::
@@ -22,16 +24,6 @@ CST笔记
    coding/index
 
 
-生活 读书 新知
-=============
-
-.. toctree::
-   :maxdepth: 2
-
-   book/index
-   movie/index
-   music/index
-
 Indices and tables
 ====================
 
@@ -39,5 +31,4 @@ Indices and tables
 * :ref:`modindex`
 * :ref:`search`
 * `rst docs <docs/index.html>`_
-* :doc:`about`
 * :doc:`test`
