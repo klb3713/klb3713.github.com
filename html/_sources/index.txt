@@ -10,6 +10,7 @@
 .. toctree::
    :maxdepth: 1
 
+   machine learning/lda_note
    coding/python_challenge
    coding/usaco/beads.rst
 
@@ -24,11 +25,10 @@
    coding/index
 
 
-Indices and tables
-====================
+常用链接
+=========
 
 * :ref:`genindex`
 * :ref:`modindex`
 * :ref:`search`
-* `rst docs <docs/index.html>`_
-* :doc:`test`
+* `Docutils Project Documentation Overview <docs/index.html>`_
