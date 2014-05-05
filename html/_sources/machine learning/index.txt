@@ -7,6 +7,7 @@
    :maxdepth: 1
    
    lda_note
+   dp4nlp_note
 
 Andrew Ng 公开课笔记
 ---------------------
